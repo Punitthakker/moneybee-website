@@ -352,10 +352,9 @@ section { padding: clamp(80px, 11vw, 150px) 0; position: relative; }
 /* ---------- FILM ---------- */
 .film-phone { position: relative; width: min(340px, 78vw); aspect-ratio: 9 / 16; margin-inline: auto; border-radius: 44px; padding: 10px; background: #0B0A08; box-shadow: 0 60px 120px -40px rgba(30, 20, 5, .6), inset 0 0 0 1.5px #3A352B; }
 .film-phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 35px; background: #14120E; display: block; }
-.film-ring { position: absolute; inset: -26px; pointer-events: none; }
-.film-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-.film-ring circle { fill: none; stroke: var(--honey); stroke-width: .6; stroke-dasharray: 289; stroke-dashoffset: calc(289 * (1 - var(--p, 0))); stroke-linecap: round; opacity: .8; }
-.film-ring { border-radius: 50%; }
+.film-ring { position: absolute; left: 18%; right: 18%; bottom: -26px; height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; pointer-events: none; }
+.film-ring svg { display: none; }
+.film-ring::after { content: ""; position: absolute; inset: 0; background: var(--honey); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
 .btn svg path { fill: none; }
 
 /* ---------- GAME ---------- */
