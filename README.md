@@ -7,4 +7,4 @@ Marketing site for the MoneyBee Payment OS. Static HTML, CSS and JS with no buil
 - `main.js` - motion: hero routing sequence, honeycomb modules, console tabs, scroll-drawn integration line
 - `assets/img` - product screenshots of MoneyBee Lite, the checkout and the operator console
 
-Deployed on Netlify (`netlify.toml`). Preview locally with `python3 -m http.server`.
+Live at https://moneybee.world (Netlify, DNS at GoDaddy). Deploys from this folder; `netlify.toml` sets caching and security headers.
