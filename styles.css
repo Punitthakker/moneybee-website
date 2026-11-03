@@ -427,6 +427,68 @@ section { padding: clamp(80px, 11vw, 150px) 0; position: relative; }
 @media (max-width: 560px) { .hud { left: 12px; bottom: 12px; } .hud-pill span { display: none; } .toast { right: 12px; bottom: 70px; } .g-top { flex-wrap: wrap; } .g-timer { order: 3; flex-basis: 100%; } }
 @media (prefers-reduced-motion: reduce) { .toast svg, .hud.bump .hud-pill, .g-opt.wrong { animation: none; } }
 
+
+/* ---------- before / after integration diagrams ---------- */
+.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.dia { position: relative; align-content: start; border-radius: 30px; padding: 34px 40px 30px; background: color-mix(in oklab, var(--honey) 14%, var(--bg)); display: grid; justify-items: center; overflow: hidden; isolation: isolate; }
+.dia.with { background: linear-gradient(160deg, color-mix(in oklab, var(--honey-hi) 22%, var(--bg)), color-mix(in oklab, var(--honey) 34%, var(--bg))); }
+.dia-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: visible; }
+.dia > *:not(.dia-svg) { position: relative; z-index: 1; }
+.dia-svg .wire { fill: none; stroke: var(--gold); stroke-width: 2; stroke-linejoin: round; opacity: .75; }
+.dia-svg .wire.dash { stroke-dasharray: 10 9; animation: march 1.6s linear infinite; }
+.dia-svg .wire.solid { stroke: var(--ink); opacity: .85; }
+.dia-svg .wire.faint { stroke: var(--gold); opacity: .55; }
+.dia-svg .arrow { fill: none; stroke: var(--gold); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.dia-svg .arrow.ink { stroke: var(--ink); }
+.dia-svg .joint { fill: var(--ink); }
+.dia-svg .pkt { fill: var(--gold); filter: drop-shadow(0 0 5px var(--honey)); }
+.with .dia-svg .pkt { fill: var(--gold-deep); }
+@keyframes march { to { stroke-dashoffset: -38; } }
+.nd { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 14px; text-align: center; font-size: 15.5px; font-weight: 500; letter-spacing: -.01em; box-shadow: 0 6px 18px -12px rgba(60, 45, 15, .4); }
+.nd.top { background: var(--ink); color: var(--on-ink); border-color: var(--ink); padding: 14px 38px; font-size: 17px; }
+.nd.top.light { background: var(--card); color: var(--text); border-color: var(--line); }
+.nd.hub { background: var(--ink); color: var(--on-ink); margin-top: 46px; padding: 14px 54px; border: 0; border-radius: 18px; display: grid; }
+.nd.hub small { color: var(--honey); font-weight: 500; font-size: 13.5px; }
+.nd.hub b { font-size: 26px; font-weight: 600; letter-spacing: -.045em; }
+.nd.hub b span { color: var(--honey); }
+[data-theme="dark"] .nd.top:not(.light), [data-theme="dark"] .nd.hub { background: #1E1B13; color: #F2EDE2; border: 1px solid var(--honey); }
+.dia .grid6 { width: min(380px, 78%); display: grid; grid-template-columns: 1fr 1fr; gap: 30px 26px; margin-top: 64px; }
+.dia.with .grid6 { margin-top: 56px; width: min(420px, 86%); gap: 22px 40px; }
+.dia-cap { margin: 34px 0 0; color: var(--soft); font-size: 15px; justify-self: start; }
+.dia.with .dia-cap { color: var(--gold-deep); font-weight: 500; }
+.dia-tag { justify-self: start; margin: -6px 0 14px; color: var(--gold-deep); font-weight: 500; }
+
+/* ---------- partner orbs with colour and marks ---------- */
+.orb { position: relative; overflow: hidden; isolation: isolate; text-decoration: none; }
+.orb .lg { width: 52px; height: 52px; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 4px; }
+.orb b { font-size: 32px; }
+.orb .what { color: inherit; opacity: .78; font-size: 15px; max-width: 18ch; }
+.orb em { font-style: normal; font-size: 13.5px; font-weight: 600; margin-top: 8px; padding: 5px 12px; border-radius: 999px; transition: transform .3s var(--ease); }
+.orb:hover em { transform: translateY(-2px); }
+.orb::after { content: ""; position: absolute; inset: -40%; z-index: -1; background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, .22), transparent 30%); animation: orbit 9s linear infinite; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+.orb.main .lg { stroke: #D9B878; } .orb.main b span { color: #D9B878; font-size: inherit; max-width: none; opacity: 1; }
+.orb.sole { background: radial-gradient(120% 120% at 30% 20%, #FFE6A8, #E9A93A 55%, #B9741A); color: #2A1A05; border: 0; box-shadow: 0 30px 60px -28px rgba(185, 116, 26, .7); }
+.orb.sole .lg { stroke: #2A1A05; } .orb.sole .lg circle { fill: #2A1A05; fill-opacity: .12; }
+.orb.sole em { background: rgba(42, 26, 5, .12); }
+.orb.ekka { background: radial-gradient(120% 120% at 30% 20%, #3A3550, #1C1A28 60%, #0F0E16); color: #F1ECFF; border: 0; box-shadow: 0 30px 60px -28px rgba(30, 25, 60, .8); }
+.orb.ekka .lg { stroke: #C9B8FF; } .orb.ekka .lg rect:last-child { fill: #D9B878; stroke: #D9B878; }
+.orb.ekka em { background: rgba(201, 184, 255, .16); color: #E3D9FF; }
+.orb.main em { background: rgba(217, 184, 120, .16); }
+
+@media (max-width: 980px) {
+  .ba { grid-template-columns: 1fr; }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .orb, .orb.main { width: 100%; padding: 16px 8px; }
+  .orb b { font-size: 21px; } .orb.main b { font-size: 19px; } .orb .what { display: none; } .orb .lg { width: 34px; height: 34px; } .orb em { font-size: 11.5px; padding: 4px 8px; margin-top: 4px; }
+}
+@media (max-width: 560px) {
+  .dia { padding: 26px 18px 22px; border-radius: 24px; }
+  .dia .grid6, .dia.with .grid6 { width: 86%; gap: 22px 22px; }
+  .nd { font-size: 14px; padding: 11px 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .dia-svg .wire.dash, .orb::after { animation: none; } }
+
 /* FOOTER */
 .foot { border-top: 1px solid var(--line); padding: 50px 0 60px; }
 .foot-in { display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: start; }

@@ -193,12 +193,11 @@
     steps.style.setProperty('--draw', k.toFixed(3));
     items.forEach((li) => li.classList.toggle('lit', li.getBoundingClientRect().top + 10 < mid));
   }
-  if (!reduce.matches) steps.style.setProperty('--draw', 0);
-  else items.forEach((li) => li.classList.add('lit'));
+  if (steps) { if (!reduce.matches) steps.style.setProperty('--draw', 0); else items.forEach((li) => li.classList.add('lit')); }
 
   // ---------- six into one ----------
   const six = $('.six');
-  new IntersectionObserver((es) => es.forEach((e) => six.classList.toggle('go', e.isIntersecting && e.intersectionRatio > 0.6)), { threshold: [0, 0.6, 1] }).observe(six);
+  if (six) new IntersectionObserver((es) => es.forEach((e) => six.classList.toggle('go', e.isIntersecting && e.intersectionRatio > 0.6)), { threshold: [0, 0.6, 1] }).observe(six);
 
   // ---------- counters ----------
   const cio = new IntersectionObserver((es) => es.forEach((e) => {
@@ -538,6 +537,64 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
     });
     $$('.flow, .talk-card').forEach((el) => el.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); el.style.setProperty('--mx', `${e.clientX - r.left}px`); el.style.setProperty('--my', `${e.clientY - r.top}px`); }));
   }
+
+
+  // =====================================================================
+  // Before and after: six tangled integrations vs one clean MoneyBee line.
+  // =====================================================================
+  const NSs = 'http://www.w3.org/2000/svg';
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(NSs, tag); Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v)); parent.appendChild(e); return e; };
+  const layoutDia = (dia) => {
+    const svg = $('.dia-svg', dia), box = dia.getBoundingClientRect(); if (!box.width) return;
+    svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`); svg.innerHTML = '';
+    const rel = (el) => { const r = el.getBoundingClientRect(); return { l: r.left - box.left, r: r.right - box.left, t: r.top - box.top, b: r.bottom - box.top, cx: r.left - box.left + r.width / 2, cy: r.top - box.top + r.height / 2 }; };
+    const top = rel($('.nd.top', dia)), nodes = $$('.grid6 .nd', dia).map(rel);
+    const paths = [];
+    if (dia.dataset.dia === 'mess') {
+      // Each provider gets its own route out of the business: overlapping elbows, some dashed.
+      const W = box.width, pad = 14;
+      nodes.forEach((n, i) => {
+        const left = n.cx < W / 2, sx = top.cx + (i - 2.5) * 16, laneY = top.b + 16 + (i % 3) * 14;
+        const outerX = left ? pad + (i % 3) * 12 : W - pad - (i % 3) * 12;
+        const ex = left ? n.l - 4 : n.r + 4;
+        const d = `M${sx} ${top.b} V${laneY} H${outerX} V${n.cy} H${ex}`;
+        paths.push(mk('path', { d, class: 'wire' + (i % 2 ? ' dash' : '') }, svg));
+        mk('path', { d: left ? `M${ex - 8} ${n.cy - 5} L${ex} ${n.cy} L${ex - 8} ${n.cy + 5}` : `M${ex + 8} ${n.cy - 5} L${ex} ${n.cy} L${ex + 8} ${n.cy + 5}`, class: 'arrow' }, svg);
+      });
+    } else {
+      const hub = rel($('.nd.hub', dia)), busY = hub.b + (nodes[0].t - hub.b) / 2;
+      paths.push(mk('path', { d: `M${top.cx} ${top.b} V${hub.t - 4}`, class: 'wire solid' }, svg));
+      mk('path', { d: `M${top.cx - 6} ${hub.t - 10} L${top.cx} ${hub.t - 3} L${top.cx + 6} ${hub.t - 10}`, class: 'arrow ink' }, svg);
+      const xs = [...new Set(nodes.map((n) => Math.round(n.cx)))];
+      mk('path', { d: `M${hub.cx} ${hub.b} V${busY} M${Math.min(...xs)} ${busY} H${Math.max(...xs)}`, class: 'wire solid' }, svg);
+      nodes.forEach((n) => {
+        // reach each row down the column gutter so lines never cross a box
+        const d = n.t - nodes[0].t < 4 ? `M${hub.cx} ${hub.b} V${busY} H${n.cx} V${n.t - 3}` : `M${hub.cx} ${hub.b} V${busY} H${n.cx < hub.cx ? n.l - 12 : n.r + 12} V${n.cy} H${n.cx < hub.cx ? n.l - 3 : n.r + 3}`;
+        paths.push(mk('path', { d, class: 'wire solid faint' }, svg));
+      });
+      mk('rect', { x: hub.cx - 6, y: busY - 6, width: 12, height: 12, transform: `rotate(45 ${hub.cx} ${busY})`, class: 'joint' }, svg);
+    }
+    // Travelling dots
+    dia._dots = paths.map((p, i) => ({ p, len: p.getTotalLength(), dot: mk('circle', { r: 4.5, class: 'pkt' }, svg), off: i / paths.length }));
+  };
+  const dias = $$('[data-dia]');
+  const layoutAll = () => dias.forEach(layoutDia);
+  layoutAll(); addEventListener('resize', layoutAll); document.fonts && document.fonts.ready.then(layoutAll);
+  let diaOn = false;
+  dias.forEach((d) => new IntersectionObserver((es) => { d._on = es[0].isIntersecting; }, { threshold: 0.2 }).observe(d));
+  const diaTick = (t) => {
+    dias.forEach((d) => {
+      if (!d._on || !d._dots || paused) return;
+      const slow = d.dataset.dia === 'mess';
+      d._dots.forEach(({ p, len, dot, off }, i) => {
+        const k = ((t / (slow ? 3600 : 2200)) + off) % 1;
+        const q = p.getPointAtLength(len * k); dot.setAttribute('cx', q.x); dot.setAttribute('cy', q.y);
+        dot.setAttribute('opacity', slow && i % 3 === 1 && k > .6 ? 0 : Math.sin(k * Math.PI));
+      });
+    });
+    requestAnimationFrame(diaTick);
+  };
+  if (!reduce.matches) requestAnimationFrame(diaTick);
 
   onScroll();
 })();
