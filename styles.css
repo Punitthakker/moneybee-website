@@ -604,7 +604,7 @@ section { padding: clamp(80px, 11vw, 150px) 0; position: relative; }
 .doc code { font: 13.5px ui-monospace, "SF Mono", Menlo, monospace; background: color-mix(in oklab, var(--honey) 16%, var(--card)); padding: 2px 6px; border-radius: 6px; }
 .doc pre { position: relative; margin: 14px 0 20px; padding: 18px 20px; border-radius: 16px; background: #12110D; color: #E9E2D3; overflow-x: auto; font: 13.5px/1.7 ui-monospace, "SF Mono", Menlo, monospace; box-shadow: 0 0 0 1px rgba(217, 184, 120, .12); }
 .doc pre code { background: none; padding: 0; color: inherit; font: inherit; }
-.copy { position: absolute; top: 10px; right: 10px; border: 1px solid rgba(217, 184, 120, .25); background: rgba(217, 184, 120, .08); color: #F3D79C; border-radius: 8px; font: 500 12px "Inter Tight", sans-serif; padding: 5px 10px; cursor: pointer; }
+.copy-btn { position: absolute; top: 10px; right: 10px; border: 1px solid rgba(217, 184, 120, .25); background: rgba(217, 184, 120, .08); color: #F3D79C; border-radius: 8px; font: 500 12px "Inter Tight", sans-serif; padding: 5px 10px; cursor: pointer; }
 .doc table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 14.5px; }
 .doc th, .doc td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .doc th { font-weight: 600; color: var(--soft); font-size: 13px; }
@@ -737,4 +737,4 @@ section { padding: clamp(80px, 11vw, 150px) 0; position: relative; }
 }
 @media (max-width: 560px) { .foot-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 main { overflow-x: clip; }
-.doc pre { padding-top: 44px; } .copy { top: 8px; right: 8px; }
+.doc pre { padding-top: 44px; } .copy-btn { top: 8px; right: 8px; }

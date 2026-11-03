@@ -27,7 +27,7 @@
 
   // Copy buttons on code blocks.
   $$('.doc pre').forEach((pre) => {
-    const b = document.createElement('button'); b.className = 'copy'; b.type = 'button'; b.textContent = 'Copy';
+    const b = document.createElement('button'); b.className = 'copy-btn'; b.type = 'button'; b.textContent = 'Copy';
     b.addEventListener('click', async () => {
       try { await navigator.clipboard.writeText(pre.querySelector('code').innerText); b.textContent = 'Copied'; } catch (e) { b.textContent = 'Select and copy'; }
       setTimeout(() => (b.textContent = 'Copy'), 1600);
