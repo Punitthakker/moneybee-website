@@ -34,8 +34,8 @@
       <a href="#platform">Platform</a>
       <a href="#products">Products</a>
       <a href="#routing">Orchestration</a>
-      <a href="#integrate">Integrate</a>
-      <a href="#security">Security</a>
+      <a href="#developers">Developers</a>
+      <a href="#play">Play</a>
     </nav>
     <div class="bar-actions">
       <button class="theme" type="button" aria-label="Switch light or dark theme">
@@ -47,7 +47,7 @@
     </div>
   </div>
   <div class="sheet" id="sheet" hidden>
-    <a href="#platform">Platform</a><a href="#products">Products</a><a href="#routing">Orchestration</a><a href="#integrate">Integrate</a><a href="#security">Security</a>
+    <a href="#platform">Platform</a><a href="#products">Products</a><a href="#routing">Orchestration</a><a href="#global">Global</a><a href="#developers">Developers</a><a href="#integrate">Integrate</a><a href="#security">Security</a>
     <a class="btn ink" href="#talk">Let's talk</a>
   </div>
 </header>
@@ -56,9 +56,11 @@
 
 <!-- HERO: one authored moment - a payment finds its route -->
 <section class="hero">
+  <canvas class="silk" aria-hidden="true"></canvas>
   <div class="wrap">
-    <h1 class="h-hero"><span class="line">One Payment OS.</span> <span class="line soft">Every rail on earth.</span></h1>
-    <p class="lede">Accept, route, settle, issue and reconcile money on one ledger.</p>
+    <p class="os-tag"><span class="dot"></span>The Payment OS <span class="rot" data-rot><b>Accept locally</b><b>Connect globally</b><b>Orchestrate intelligently</b></span></p>
+    <h1 class="h-hero"><span class="line">The world moves.</span> <span class="line soft">Move money with it.</span></h1>
+    <p class="lede">One Payment OS to accept, route, settle, issue and reconcile, across 120+ connectors and one ledger.</p>
     <div class="ctas">
       <a class="btn ink lg" href="#talk">Let's talk</a>
       <a class="btn ghost lg" href="#platform">Explore the platform <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -174,6 +176,24 @@
   </div>
 </section>
 
+<!-- FILM -->
+<section class="film" id="film">
+  <div class="wrap split">
+    <div class="copy">
+      <h2 class="h2 reveal">The Payment OS<br><span class="soft">in 30 seconds.</span></h2>
+      <p class="small">Routing, checkout, the app, reconciliation and code. Sound on.</p>
+      <div class="ctas"><button class="btn ink" type="button" data-film-sound><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span>Play with sound</span></button>
+      <a class="btn ghost" href="/assets/video/MoneyBee_PaymentOS_Reel.mp4" download>Download MP4</a></div>
+    </div>
+    <div class="film-phone">
+      <video data-film muted playsinline loop preload="none" poster="/assets/video/reel-poster.webp" aria-label="MoneyBee Payment OS film">
+        <source src="/assets/video/MoneyBee_PaymentOS_Reel.mp4" type="video/mp4">
+      </video>
+      <div class="film-ring" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/></svg></div>
+    </div>
+  </div>
+</section>
+
 <!-- ROUTING / CONSOLE -->
 <section class="console" id="routing">
   <div class="wrap">
@@ -198,6 +218,83 @@
       </div>
       <div class="bar-prog" aria-hidden="true"><span></span></div>
     </div>
+  </div>
+</section>
+
+<!-- GAME: beat the router -->
+<section class="game" id="play">
+  <div class="wrap">
+    <h2 class="h2 reveal center">Beat the router.<br><span class="soft">Five payments. Pick the best route.</span></h2>
+    <div class="arena" data-game>
+      <div class="g-top">
+        <span class="g-round" data-round>Round 1 of 5</span>
+        <div class="g-timer" aria-hidden="true"><span data-timer></span></div>
+        <span class="g-score">You <b data-you>0</b> · MoneyBee <b data-mb>0</b></span>
+      </div>
+      <div class="g-pay" data-pay>
+        <span class="g-m" data-gm>mada</span><b class="g-a" data-ga>SAR 310.00</b><span class="g-c" data-gc>Riyadh</span>
+      </div>
+      <div class="g-opts" data-opts></div>
+      <p class="g-why" data-why aria-live="polite">Tap the provider you would send this payment to.</p>
+      <div class="g-end" data-end hidden>
+        <b data-endt>You matched the router 4 of 5 times.</b>
+        <span>MoneyBee makes this call on every payment, in under 100 ms.</span>
+        <button class="btn ink" type="button" data-again>Play again</button>
+      </div>
+      <button class="btn ink g-start" type="button" data-start>Start the game</button>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section class="global" id="global">
+  <div class="wrap split rev">
+    <div class="globe-wrap" aria-label="MoneyBee corridors from Dubai to the world">
+      <canvas class="globe" width="640" height="640"></canvas>
+      <span class="city-tag t1">Dubai · AED</span><span class="city-tag t2">Mumbai · INR</span><span class="city-tag t3">London · GBP</span>
+    </div>
+    <div class="copy">
+      <h2 class="h2 reveal">Accept locally.<br><span class="soft">Settle globally.</span></h2>
+      <div class="geo">
+        <div><b>Local</b><span>Prices in your customer's currency</span></div>
+        <div><b>Trusted</b><span>Methods they already use, shown first</span></div>
+        <div><b>Daily</b><span>Settlement into one balance</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPERS -->
+<section class="dev" id="developers">
+  <div class="wrap split">
+    <div class="copy">
+      <h2 class="h2 reveal">Ten lines<br><span class="soft">to your first payment.</span></h2>
+      <div class="sdks"><span>REST</span><span>Node</span><span>Python</span><span>Java</span><span>PHP</span><span>iOS</span><span>Android</span><span>WooCommerce</span><span>Magento</span><span>OpenCart</span></div>
+      <p class="small">Idempotent by default. Signed webhooks. A sandbox where every connector behaves like the real thing.</p>
+    </div>
+    <div class="code" aria-label="Code sample: create a payment">
+      <div class="code-top">
+        <div class="ctabs" role="tablist"><button role="tab" aria-selected="true" data-l="node">Node</button><button role="tab" aria-selected="false" data-l="python">Python</button><button role="tab" aria-selected="false" data-l="curl">cURL</button></div>
+        <span class="live-dot">Sandbox</span>
+      </div>
+<pre class="src-code" data-code><code></code></pre>
+      <div class="resp" data-resp><span class="rk">200 OK</span><pre><code></code></pre></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECONCILIATION -->
+<section class="recon" id="recon">
+  <div class="wrap">
+    <h2 class="h2 reveal center">Every dirham,<br><span class="soft">matched three ways.</span></h2>
+    <div class="ledger" role="table" aria-label="Reconciliation across processor, bank and ledger">
+      <div class="lr head" role="row"><span role="columnheader">Ref</span><span role="columnheader">Processor</span><span role="columnheader">Bank</span><span role="columnheader">Ledger</span><span role="columnheader">Status</span></div>
+      <div class="lr" role="row"><span>MB-1048</span><span>AED 12,000.00</span><span>AED 12,000.00</span><span>AED 12,000.00</span><span class="st" data-st="ok">Matched</span></div>
+      <div class="lr" role="row"><span>MB-1049</span><span>USD 1,240.50</span><span>USD 1,240.50</span><span>USD 1,240.50</span><span class="st" data-st="ok">Matched</span></div>
+      <div class="lr" role="row"><span>MB-1050</span><span>AED 5,000.00</span><span>AED 4,995.00</span><span>AED 5,000.00</span><span class="st" data-st="review">Review</span></div>
+      <div class="lr" role="row"><span>MB-1051</span><span>INR 84,300.00</span><span>INR 84,300.00</span><span>INR 84,300.00</span><span class="st" data-st="ok">Matched</span></div>
+    </div>
+    <p class="center small mx">Daily close in minutes, with SoleAI.</p>
   </div>
 </section>
 
@@ -239,6 +336,7 @@
     <div><b data-count="24">24</b><span>Modules on one ledger</span></div>
     <div><b data-count="99.99" data-dec="2" data-suffix="%">99.99%</b><span>Availability target</span></div>
     <div><b data-count="100" data-prefix="&lt;" data-suffix=" ms">&lt;100 ms</b><span>API response</span></div>
+    <div><b data-count="215">215</b><span>TPS per 8/32 server</span></div>
   </div>
 </section>
 
@@ -264,7 +362,7 @@
       <div class="sg"><b>WAF · DDoS</b><span>Edge protection</span></div>
       <div class="sg"><b>IDS · IPS</b><span>Intrusion detection</span></div>
       <div class="sg"><b>OWASP Top 10</b><span>Covered</span></div>
-      <div class="sg"><b>AWS · Azure · On-prem</b><span>Primary and DR</span></div>
+      <div class="sg"><b>AWS · Azure · On-prem</b><span>Primary and DR, REST microservices</span></div>
     </div>
   </div>
 </section>
@@ -293,10 +391,23 @@
       <p class="small">The Payment OS. Dubai, UAE.<br><a href="mailto:pt@moneybee.world">pt@moneybee.world</a> · <a href="https://wa.me/971558612001" target="_blank" rel="noopener">WhatsApp +971 55 861 2001</a></p>
     </div>
     <nav aria-label="Footer"><a href="#platform">Platform</a><a href="#products">Products</a><a href="#routing">Orchestration</a><a href="#integrate">Integrate</a><a href="#security">Security</a></nav>
-    <p class="fine">© 2026 MoneyBee. Service availability varies by market, eligibility and configuration.</p>
+    <p class="fine">Reconciliation powered by <a href="https://soleai.xyz" target="_blank" rel="noopener">SoleAI</a> · Card issuing by <a href="https://ekka.world" target="_blank" rel="noopener">ekka</a><br>© 2026 MoneyBee. Service availability varies by market, eligibility and configuration.</p>
   </div>
 </footer>
 
+<div class="hud" data-hud aria-live="polite">
+  <button class="hud-pill" type="button" aria-expanded="false" aria-controls="hud-panel">
+    <svg viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/></svg>
+    <b data-honey>0</b><span>honey</span><i data-coins>0/6</i>
+  </button>
+  <div class="hud-panel" id="hud-panel" hidden>
+    <b>Your hive</b>
+    <p>Explore MoneyBee to earn honey and unlock coins.</p>
+    <ul data-coinlist></ul>
+  </div>
+</div>
+<div class="toast" data-toast role="status"></div>
+<canvas class="confetti" aria-hidden="true"></canvas>
 <script src="/main.js" defer></script>
 </body>
 </html>
