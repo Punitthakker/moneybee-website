@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
+<title>MoneyBee Payment OS</title>
+<meta name="description" content="MoneyBee is the Payment OS for global commerce. Accept, route, settle, issue and reconcile money on one ledger, across 120+ connectors.">
+<meta name="theme-color" content="#F4EFE4">
+<meta property="og:title" content="MoneyBee Payment OS">
+<meta property="og:description" content="Accept, route, settle, issue and reconcile money on one ledger.">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/InterTight-500Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/InterTight-300Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<script>
+  // Pick up the saved theme before first paint.
+  try { var t = localStorage.getItem('mb-theme'); if (t) document.documentElement.dataset.theme = t; else if (matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="bar" id="top">
+  <div class="bar-in">
+    <a class="brand" href="#top" aria-label="MoneyBee home">
+      <svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/><path d="M7 10H19M6 13H20M7 16H19"/></svg>
+      <span>money<b>bee</b></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#platform">Platform</a>
+      <a href="#products">Products</a>
+      <a href="#routing">Orchestration</a>
+      <a href="#integrate">Integrate</a>
+      <a href="#security">Security</a>
+    </nav>
+    <div class="bar-actions">
+      <button class="theme" type="button" aria-label="Switch light or dark theme">
+        <svg viewBox="0 0 24 24" class="sun" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        <svg viewBox="0 0 24 24" class="moon" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      </button>
+      <a class="btn ink" href="#talk">Let's talk</a>
+      <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="sheet" id="sheet" hidden>
+    <a href="#platform">Platform</a><a href="#products">Products</a><a href="#routing">Orchestration</a><a href="#integrate">Integrate</a><a href="#security">Security</a>
+    <a class="btn ink" href="#talk">Let's talk</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO: one authored moment - a payment finds its route -->
+<section class="hero">
+  <div class="wrap">
+    <h1 class="h-hero"><span class="line">One Payment OS.</span> <span class="line soft">Every rail on earth.</span></h1>
+    <p class="lede">Accept, route, settle, issue and reconcile money on one ledger.</p>
+    <div class="ctas">
+      <a class="btn ink lg" href="#talk">Let's talk</a>
+      <a class="btn ghost lg" href="#platform">Explore the platform <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+
+  <div class="stage wrap" aria-label="A payment is routed by MoneyBee to the best provider, with automatic failover">
+    <div class="flow">
+      <div class="col in">
+        <div class="tx" data-tx>
+          <span class="tx-m" data-m>Apple Pay</span>
+          <span class="tx-a" data-a>AED 1,240.00</span>
+          <span class="tx-c" data-c>Dubai</span>
+        </div>
+        <ul class="src">
+          <li>Checkout</li><li>Payment link</li><li>QR</li><li>Invoice</li><li>API</li>
+        </ul>
+      </div>
+
+      <svg class="wires" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="g-wire" x1="0" x2="1"><stop offset="0" stop-color="var(--gold)" stop-opacity=".15"/><stop offset=".5" stop-color="var(--gold)" stop-opacity=".65"/><stop offset="1" stop-color="var(--gold)" stop-opacity=".15"/></linearGradient>
+        </defs>
+        <path id="w-in" d="M40 210 C 220 210, 300 210, 440 210"/>
+        <path id="w-a" d="M560 210 C 680 210, 720 70, 960 70"/>
+        <path id="w-b" d="M560 210 C 700 210, 760 165, 960 165"/>
+        <path id="w-c" d="M560 210 C 700 210, 760 260, 960 260"/>
+        <path id="w-d" d="M560 210 C 680 210, 720 355, 960 355"/>
+        <circle class="pulse" r="7" id="p-in"/>
+        <circle class="pulse" r="7" id="p-out"/>
+        <circle class="pulse bad" r="7" id="p-bad"/>
+      </svg>
+
+      <div class="core" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="hexcore">
+          <polygon class="h1" points="100,8 180,54 180,146 100,192 20,146 20,54"/>
+          <polygon class="h2" points="100,34 157,67 157,133 100,166 43,133 43,67"/>
+          <g class="bars"><path d="M70 82H130M62 100H138M70 118H130"/></g>
+        </svg>
+        <span class="core-l">MoneyBee OS</span>
+        <span class="core-s" data-rule>Rule: lowest cost</span>
+      </div>
+
+      <div class="col out">
+        <div class="prov" data-p="0"><i></i>Acquirer UAE<em>2.1%</em></div>
+        <div class="prov" data-p="1"><i></i>Acquirer EU<em>2.4%</em></div>
+        <div class="prov" data-p="2"><i></i>Local APM<em>1.8%</em></div>
+        <div class="prov" data-p="3"><i></i>Crypto rail<em>1.0%</em></div>
+      </div>
+    </div>
+    <div class="ticker" aria-live="off">
+      <span class="tk"><b data-ok>Approved</b> in <span data-ms>212</span> ms</span>
+      <span class="tk dim">Smart routing · Cascading · One ledger</span>
+      <button class="pause" type="button" aria-pressed="false">Pause motion</button>
+    </div>
+  </div>
+</section>
+
+<!-- RAILS -->
+<section class="rails" aria-label="Payment methods and rails">
+  <div class="marquee">
+    <div class="track">
+      <span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Google Pay</span><span>Samsung Pay</span><span>mada</span><span>UPI</span><span>Aani</span><span>e&amp; money</span><span>Tabby</span><span>Tamara</span><span>Alipay+</span><span>WeChat Pay</span><span>iDEAL</span><span>PayPal</span><span>USDT</span><span>USDC</span><span>BTC</span><span>ETH</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM: honeycomb of modules -->
+<section class="platform" id="platform">
+  <div class="wrap">
+    <h2 class="h2 reveal">Everything money does.<br><span class="soft">One operating system.</span></h2>
+    <div class="comb" role="list">
+      <div class="cell" role="listitem" tabindex="0" data-d="Cards, wallets, local methods and crypto in one checkout"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h4"/></svg><b>Accept</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Route by cost, success rate, currency or ticket size, with failover"><svg viewBox="0 0 24 24"><path d="M4 12h6l4-5h6M14 17h6M10 12l4 5"/><circle cx="4" cy="12" r="1.5"/></svg><b>Orchestrate</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Velocity, limits and dynamic 3DS before a provider is called"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><b>Risk</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Double-entry ledger behind every payment, payout and fee"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><b>Ledger</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Daily settlement with reserves, splits and maker-checker"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg><b>Settle</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Pay suppliers, sellers and staff, single or in bulk"><svg viewBox="0 0 24 24"><path d="M4 17h12M14 7l6 5-6 5M4 7h8"/></svg><b>Payouts</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Visa cards funded from crypto wallets or bank accounts, via ekka"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M15 10h3M6 14h5"/><circle cx="16" cy="14" r="1.2"/></svg><b>Issue cards</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="USDT, USDC, BTC and ETH, settled in fiat"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M10 8h4a2 2 0 0 1 0 4h-4h5a2 2 0 0 1 0 4h-5zM11 6v2M13 6v2M11 16v2M13 16v2"/></svg><b>Crypto</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Live FX quotes and multi-currency balances"><svg viewBox="0 0 24 24"><path d="M5 8h13l-3-3M19 16H6l3 3"/></svg><b>FX</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Subscriptions, invoices and payment plans"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 12-5l2 2M19 12a7 7 0 0 1-12 5l-2-2M19 4v5h-5M5 20v-5h5"/></svg><b>Billing</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Chargebacks tracked, evidenced and held from payouts"><svg viewBox="0 0 24 24"><path d="M6 21V4M6 4h11l-2 4 2 4H6"/></svg><b>Disputes</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Three-way match across processor, bank and ledger, via SoleAI"><svg viewBox="0 0 24 24"><path d="M3 12l4 4 8-8M11 16l1 1 9-9"/></svg><b>Reconcile</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Agentic KYB: drop a licence, get a live merchant"><svg viewBox="0 0 24 24"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 20c.8-3.5 3.4-5.5 6.5-5.5s4.5 1 5.5 2.5M15 18l2 2 4-4"/></svg><b>Onboard</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="Transaction monitoring, cases and goAML reporting"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><b>AML</b></div>
+    </div>
+    <p class="comb-note" aria-live="polite" data-note>Tap a cell to see what it does.</p>
+  </div>
+</section>
+
+<!-- PRODUCTS: real product shots -->
+<section class="products" id="products">
+  <div class="wrap split">
+    <div class="copy">
+      <h2 class="h2 reveal">Get paid four ways.<br><span class="soft">Watch it land in one app.</span></h2>
+      <ul class="ways">
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18"/></svg>Checkout</li>
+        <li><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Payment link</li>
+        <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2M20 14v6h-6"/></svg>QR</li>
+        <li><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7"/></svg>Invoice</li>
+      </ul>
+      <p class="small">MoneyBee Lite for iOS and Android. Payments, links, payouts and disputes in your pocket, in English and Arabic.</p>
+    </div>
+    <div class="phones" aria-label="MoneyBee Lite app and customer checkout">
+      <figure class="phone p1"><img src="/assets/img/pay-page.webp" alt="Customer checkout page showing cards, wallets and local methods" width="390" height="844" loading="lazy"></figure>
+      <figure class="phone p2"><img src="/assets/img/app-today.webp" alt="MoneyBee Lite Today screen with sales, honeycomb goal and payment link button" width="390" height="844" loading="lazy"></figure>
+      <figure class="phone p3"><img src="/assets/img/app-payments.webp" alt="Payments list across Visa, Apple Pay, UPI, iDEAL and mada" width="390" height="844" loading="lazy"></figure>
+      <span class="chip c1">+ AED 929.00 · Visa</span>
+      <span class="chip c2">UPI · INR 13,165.50</span>
+      <span class="chip c3">Settles tomorrow 6 pm</span>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTING / CONSOLE -->
+<section class="console" id="routing">
+  <div class="wrap">
+    <h2 class="h2 reveal center">Complex behind the scenes.<br><span class="soft">Clear in your hands.</span></h2>
+    <div class="rules" aria-label="Routing criteria">
+      <span>Cost</span><span>Success rate</span><span>Currency</span><span>Ticket size</span><span>Payment type</span><span>Time of day</span><span>Volume</span><span>Pricing slab</span>
+    </div>
+    <div class="browser">
+      <div class="chrome"><i></i><i></i><i></i>
+        <div class="tabs" role="tablist" aria-label="Console views">
+          <button role="tab" aria-selected="true" data-t="0">Dashboard</button>
+          <button role="tab" aria-selected="false" data-t="1">Routing</button>
+          <button role="tab" aria-selected="false" data-t="2">Reconciliation</button>
+          <button role="tab" aria-selected="false" data-t="3">Merchants</button>
+        </div>
+      </div>
+      <div class="screens">
+        <img class="on" src="/assets/img/console-dashboard.webp" alt="Operator dashboard with TPV, approval rate and merchant performance" width="1800" height="1125" loading="lazy">
+        <img src="/assets/img/console-routing.webp" alt="Connectors and routing with 124 connectors ranked by cost" width="1800" height="1125" loading="lazy">
+        <img src="/assets/img/console-recon.webp" alt="Reconciliation with matched, unmatched and variance totals" width="1800" height="1125" loading="lazy">
+        <img src="/assets/img/console-merchants.webp" alt="Merchant list with applications and approved tenants" width="1800" height="1125" loading="lazy">
+      </div>
+      <div class="bar-prog" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATION: incumbent stepper, now drawn on scroll -->
+<section class="integrate" id="integrate">
+  <div class="wrap narrow">
+    <h2 class="h2 reveal">Your checkout.<br><span class="soft">One connected payment flow.</span></h2>
+    <ol class="steps">
+      <li><span class="lbl">Your business</span>
+        <div class="row"><div class="box"><small>Input A</small><b>Online store</b></div><div class="box"><small>Input B</small><b>Website or app</b></div></div></li>
+      <li><span class="lbl">Your connection</span>
+        <div class="row"><div class="box"><small>Plugin</small><b>WooCommerce · Magento · OpenCart</b></div><div class="box"><small>API · SDK</small><b>REST · iOS · Android</b></div></div></li>
+      <li class="hl"><span class="lbl">Your platform</span>
+        <div class="box gold"><small>Payment OS</small><b class="wm">money<span>bee</span></b><span class="tags"><em>Smart routing</em><em>Cascading</em><em>One ledger</em></span></div></li>
+      <li><span class="lbl">Your providers</span>
+        <div class="row"><div class="box"><small>Cards</small><b>Acquirers</b></div><div class="box"><small>APMs</small><b>Local methods</b></div><div class="box"><small>Digital assets</small><b>Crypto rails</b></div></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 6 to 1 -->
+<section class="collapse">
+  <div class="wrap split">
+    <div class="six" aria-hidden="true">
+      <span>Contract</span><span>Dashboard</span><span>Reconciliation</span><span>Contract</span><span>Dashboard</span><span>Reconciliation</span>
+      <div class="one"><svg viewBox="0 0 26 26"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/><path d="M7 10H19M6 13H20M7 16H19"/></svg></div>
+    </div>
+    <div class="copy">
+      <h2 class="h2 reveal">Six providers, six of everything.<br><span class="soft">MoneyBee makes it one.</span></h2>
+      <p class="small">One contract. One dashboard. One reconciliation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers" aria-label="Platform numbers">
+  <div class="wrap nums">
+    <div><b data-count="120" data-suffix="+">120+</b><span>Connectors</span></div>
+    <div><b data-count="24">24</b><span>Modules on one ledger</span></div>
+    <div><b data-count="99.99" data-dec="2" data-suffix="%">99.99%</b><span>Availability target</span></div>
+    <div><b data-count="100" data-prefix="&lt;" data-suffix=" ms">&lt;100 ms</b><span>API response</span></div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="eco">
+  <div class="wrap">
+    <h2 class="h2 reveal center">One core.<br><span class="soft">Three partners in the hive.</span></h2>
+    <div class="trio">
+      <article class="orb main"><svg viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/><path d="M7 10H19M6 13H20M7 16H19"/></svg><b>MoneyBee</b><span>Accept · Route · Settle · Pay out</span></article>
+      <article class="orb"><b>SoleAI</b><span>Reconciliation and reporting</span></article>
+      <article class="orb"><b>ekka</b><span>Visa cards from crypto or bank</span></article>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="security" id="security">
+  <div class="wrap">
+    <h2 class="h2 reveal">Built like a bank.<br><span class="soft">Runs like a startup.</span></h2>
+    <div class="shield-grid">
+      <div class="sg"><b>PCI DSS v4.0</b><span>Readiness</span></div>
+      <div class="sg"><b>Token vault</b><span>Card data never touches you</span></div>
+      <div class="sg"><b>WAF · DDoS</b><span>Edge protection</span></div>
+      <div class="sg"><b>IDS · IPS</b><span>Intrusion detection</span></div>
+      <div class="sg"><b>OWASP Top 10</b><span>Covered</span></div>
+      <div class="sg"><b>AWS · Azure · On-prem</b><span>Primary and DR</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="talk" id="talk">
+  <div class="wrap">
+    <div class="talk-card">
+      <svg class="talk-comb" viewBox="0 0 400 300" aria-hidden="true"></svg>
+      <h2 class="h2">Let's make your<br>next move happen.</h2>
+      <div class="ctas">
+        <a class="btn gold lg" href="mailto:hello@moneybee.world?subject=MoneyBee%20Payment%20OS">Let's talk</a>
+        <a class="btn ghost-inv lg" href="#platform">Explore the platform</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <a class="brand" href="#top"><svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/><path d="M7 10H19M6 13H20M7 16H19"/></svg><span>money<b>bee</b></span></a>
+      <p class="small">The Payment OS. Dubai, UAE.</p>
+    </div>
+    <nav aria-label="Footer"><a href="#platform">Platform</a><a href="#products">Products</a><a href="#routing">Orchestration</a><a href="#integrate">Integrate</a><a href="#security">Security</a></nav>
+    <p class="fine">© 2026 MoneyBee. Service availability varies by market, eligibility and configuration.</p>
+  </div>
+</footer>
+
+<script src="/main.js" defer></script>
+</body>
+</html>
