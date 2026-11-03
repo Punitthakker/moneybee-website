@@ -264,6 +264,12 @@ section { padding: clamp(80px, 11vw, 150px) 0; position: relative; }
 .talk-comb polygon { fill: none; stroke: #D9B878; stroke-opacity: .22; stroke-width: 1.4; transition: fill .8s; }
 .talk-comb polygon.lit { fill: rgba(217, 184, 120, .22); }
 
+.btn svg.wa { width: 19px; height: 19px; }
+.btn:hover svg.wa { transform: none; }
+.talk-contact { margin: 26px 0 0; color: #B9B09F; font-size: 15.5px; }
+.talk-contact a, .foot .small a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in oklab, var(--honey) 60%, transparent); }
+.talk-contact a:hover { color: #F3D79C; }
+
 /* FOOTER */
 .foot { border-top: 1px solid var(--line); padding: 50px 0 60px; }
 .foot-in { display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: start; }
