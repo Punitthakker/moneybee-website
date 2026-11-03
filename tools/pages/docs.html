@@ -1,0 +1,158 @@
+/docs/
+Developer docs | MoneyBee Payment OS
+Integrate MoneyBee: authentication, payments, payment links, payouts, webhooks, idempotency, errors, sandbox testing, SDKs and plugins.
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Home</a> / Developers</div>
+    <h1 class="reveal">Build on MoneyBee.<br><span class="soft">One API for all of it.</span></h1>
+    <p class="lede">A REST API with predictable JSON, signed webhooks and SDKs for TypeScript, Python, Java and PHP.</p>
+  </div>
+</section>
+
+<div class="wrap docs">
+  <nav class="toc" aria-label="Docs sections">
+    <b>Start</b>
+    <a href="#overview">Overview</a><a href="#auth">Authentication</a><a href="#quickstart">Quickstart</a>
+    <b>Guides</b>
+    <a href="#payments">Payments</a><a href="#links">Payment links</a><a href="#payouts">Payouts</a><a href="#onboarding">Onboarding</a><a href="#webhooks">Webhooks</a>
+    <b>Reference</b>
+    <a href="#idempotency">Idempotency</a><a href="#errors">Errors</a><a href="#testing">Testing</a><a href="#endpoints">Endpoints</a><a href="#sdks">SDKs and plugins</a>
+  </nav>
+
+  <article class="doc">
+    <h2 id="overview">Overview</h2>
+    <p>The MoneyBee API is organised around resources such as payment intents, payment links, payouts and webhooks. Requests and responses are JSON over HTTPS. Amounts are always integers in minor units with a currency, so <code>AED 100.00</code> is <code>{"minor": 10000, "currency": "AED"}</code>.</p>
+    <table>
+      <tr><th>Environment</th><th>Base URL</th></tr>
+      <tr><td>Production</td><td><code>https://api.moneybee.world</code></td></tr>
+      <tr><td>Sandbox</td><td>Shared with your sandbox keys during onboarding</td></tr>
+    </table>
+    <p class="note">Need sandbox access? Write to <a href="mailto:pt@moneybee.world">pt@moneybee.world</a> or message us on <a href="https://wa.me/971558612001">WhatsApp</a> and we will send keys the same day.</p>
+
+    <h2 id="auth">Authentication</h2>
+    <p>Send your secret API key as a bearer token on every request. Keep secret keys on your server; never put them in an app or a web page.</p>
+<pre><code>curl https://api.moneybee.world/v1/balances/available \
+  -H "authorization: Bearer $MONEYBEE_KEY"</code></pre>
+
+    <h2 id="quickstart">Quickstart</h2>
+    <h3>1. Install an SDK</h3>
+<pre><code>npm install @moneybee/sdk</code></pre>
+    <h3>2. Take your first payment</h3>
+<pre><code>import { MoneyBeeClient } from '@moneybee/sdk';
+
+const mb = new MoneyBeeClient({
+  baseUrl: 'https://api.moneybee.world',
+  apiKey: process.env.MONEYBEE_KEY,
+});
+
+const payment = await mb.payments.create({
+  amount: { minor: 10000, currency: 'AED' },
+});
+console.log(payment.id, payment.status);</code></pre>
+    <h3>3. Listen for the result</h3>
+    <p>Register a webhook endpoint (see <a href="#webhooks">Webhooks</a>) and fulfil the order when you receive <code>payment_intent.succeeded</code>.</p>
+
+    <h2 id="payments">Payments</h2>
+    <p>A payment intent tracks one payment from creation to settlement. MoneyBee routes it to the best connector under your rules and retries on soft declines.</p>
+<pre><code>curl -X POST https://api.moneybee.world/v1/payment_intents \
+  -H "authorization: Bearer $MONEYBEE_KEY" \
+  -H "idempotency-key: order-1042" \
+  -H "content-type: application/json" \
+  -d '{"amount": {"minor": 10000, "currency": "AED"}, "capture": "manual"}'</code></pre>
+    <p>With manual capture, capture later, in full or in part. Refunds work the same way.</p>
+<pre><code>POST /v1/payment_intents/{id}/capture
+POST /v1/payment_intents/{id}/refunds   {"amount": {"minor": 2500, "currency": "AED"}}</code></pre>
+
+    <h2 id="links">Payment links</h2>
+    <p>Create a link, share the URL or QR, and get a webhook when it is paid. Links can be single-use or reusable and can expire.</p>
+<pre><code>curl -X POST https://api.moneybee.world/v1/payment_links \
+  -H "authorization: Bearer $MONEYBEE_KEY" \
+  -H "content-type: application/json" \
+  -d '{"amount": {"minor": 45000, "currency": "AED"}, "description": "Table for 4, Friday"}'</code></pre>
+
+    <h2 id="payouts">Payouts</h2>
+    <p>Pay out from your available balance. Payouts can require a second approver (maker-checker) before they settle.</p>
+<pre><code>GET  /v1/balances/available
+POST /v1/payouts
+POST /v1/payouts/{id}/approve
+GET  /v1/reserves</code></pre>
+
+    <h2 id="onboarding">Onboarding</h2>
+    <p>Create an onboarding case for a new merchant, attach documents, and let MoneyBee agents read them and fill the application. You get a webhook as the case moves through review. Merchants who already have an approved live MID skip this step and are provisioned directly.</p>
+<pre><code>POST /v1/onboarding/cases
+GET  /v1/onboarding/cases/{id}</code></pre>
+    <p>Onboarding webhooks carry <code>x-moneybee-timestamp</code> and <code>x-moneybee-signature</code> headers, verified the same way as below.</p>
+
+    <h2 id="webhooks">Webhooks</h2>
+    <p>Register an HTTPS endpoint with <code>POST /v1/webhooks</code>. Each event is a JSON body <code>{"id", "type", "data"}</code> signed in the <code>mb-signature</code> header:</p>
+<pre><code>mb-signature: t=1767225600,v1=5f2b...e9</code></pre>
+    <p><code>v1</code> is the hex HMAC-SHA256 of <code>t + "." + rawBody</code> using your endpoint secret. Reject events older than 300 seconds.</p>
+<pre><code>import crypto from 'node:crypto';
+
+export function verify(rawBody, header, secret) {
+  const parts = Object.fromEntries(header.split(',').map((p) => p.split('=')));
+  const age = Math.abs(Date.now() / 1000 - Number(parts.t));
+  if (age > 300) return false;
+  const expected = crypto.createHmac('sha256', secret).update(`${parts.t}.${rawBody}`).digest('hex');
+  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(parts.v1));
+}</code></pre>
+    <p>Respond with any 2xx status quickly and do the work afterwards. Events can arrive more than once, so make your handler safe to repeat using the event <code>id</code>.</p>
+
+    <h2 id="idempotency">Idempotency</h2>
+    <p>Send an <code>idempotency-key</code> header on every POST. If a request times out, retry with the same key and you will get the original result instead of a second payment.</p>
+
+    <h2 id="errors">Errors</h2>
+    <table>
+      <tr><th>Status</th><th>Meaning</th></tr>
+      <tr><td><code>400</code></td><td>The request is invalid. The body says which field.</td></tr>
+      <tr><td><code>401</code></td><td>Missing or wrong API key.</td></tr>
+      <tr><td><code>402</code></td><td>The payment was declined. See <code>decline_code</code>.</td></tr>
+      <tr><td><code>404</code></td><td>The resource does not exist.</td></tr>
+      <tr><td><code>409</code></td><td>Idempotency key reused with a different body.</td></tr>
+      <tr><td><code>429</code></td><td>Too many requests. Back off and retry.</td></tr>
+      <tr><td><code>5xx</code></td><td>Something went wrong on our side. Retry with the same idempotency key.</td></tr>
+    </table>
+
+    <h2 id="testing">Testing</h2>
+    <p>In the sandbox, the last two digits of the amount in minor units choose the outcome:</p>
+    <table>
+      <tr><th>Amount ends in</th><th>Result</th><th>Example</th></tr>
+      <tr><td><code>01</code></td><td>Soft decline, <code>insufficient_funds</code>. Cascading retries the next route.</td><td><code>10001</code></td></tr>
+      <tr><td><code>02</code></td><td>Hard decline, <code>stolen_card</code>. No retry.</td><td><code>10002</code></td></tr>
+      <tr><td><code>03</code></td><td><code>requires_action</code>, a 3-D Secure challenge.</td><td><code>10003</code></td></tr>
+      <tr><td>anything else</td><td>Succeeds.</td><td><code>10000</code></td></tr>
+    </table>
+    <p>Test tokens <code>sbx_hard</code>, <code>sbx_soft_all</code> and <code>sbx_cascade</code> force a hard decline, a soft decline on every route, or a cascade to the second route.</p>
+
+    <h2 id="endpoints">Endpoints</h2>
+    <table>
+      <tr><th>Area</th><th>Endpoints</th></tr>
+      <tr><td>Payments</td><td><span class="method post">POST</span><code>/v1/payment_intents</code>, <code>/capture</code>, <code>/refunds</code></td></tr>
+      <tr><td>Payment links</td><td><span class="method post">POST</span><code>/v1/payment_links</code></td></tr>
+      <tr><td>Payouts and balances</td><td><code>/v1/payouts</code>, <code>/approve</code>, <code>/settle</code>, <code>/v1/balances/available</code>, <code>/v1/reserves</code></td></tr>
+      <tr><td>Disputes</td><td><code>/v1/disputes</code></td></tr>
+      <tr><td>Crypto</td><td><code>/v1/crypto/deposits</code></td></tr>
+      <tr><td>Cards</td><td><code>/v1/cards</code>, <code>/fund</code>, <code>/spend</code></td></tr>
+      <tr><td>Billing</td><td><code>/v1/invoices</code>, <code>/v1/subscriptions</code></td></tr>
+      <tr><td>Treasury</td><td><code>/v1/fx/quote</code>, <code>/v1/reconcile</code></td></tr>
+      <tr><td>Platform</td><td><code>/v1/routing</code>, <code>/v1/connectors</code>, <code>/v1/modules</code>, <code>/v1/webhooks</code>, <code>/v1/onboarding/cases</code></td></tr>
+    </table>
+
+    <h2 id="sdks">SDKs and plugins</h2>
+    <h3>TypeScript</h3>
+<pre><code>const mb = new MoneyBeeClient({ baseUrl, apiKey });
+const p = await mb.payments.create({ amount: { minor: 10000, currency: 'AED' } });
+await mb.payments.capture(p.id);
+await mb.payments.refund(p.id, { minor: 2500, currency: 'AED' });</code></pre>
+    <h3>Python</h3>
+<pre><code>from moneybee import MoneyBeeClient, Amount
+
+mb = MoneyBeeClient("https://api.moneybee.world", key)
+payment = mb.create_payment(Amount(10000, "AED"))</code></pre>
+    <h3>Java and PHP</h3>
+    <p>SDKs with the same methods are available for Java and PHP. Ask us for access.</p>
+    <h3>E-commerce plugins</h3>
+    <p>Ready plugins for WooCommerce, Magento, Medusa and OpenCart. Install, paste your key, and MoneyBee checkout appears at the till.</p>
+    <p class="note">Stuck? We answer developers directly: <a href="mailto:pt@moneybee.world">pt@moneybee.world</a> or <a href="https://wa.me/971558612001">WhatsApp +971 55 861 2001</a>.</p>
+  </article>
+</div>
