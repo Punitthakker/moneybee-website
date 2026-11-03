@@ -474,7 +474,7 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
   if (arena) {
     const optsEl = $('[data-opts]', arena), why = $('[data-why]', arena), timerEl = $('[data-timer]', arena), startBtn = $('[data-start]', arena), endEl = $('[data-end]', arena), payEl = $('[data-pay]', arena);
     let r = 0, you = 0, mb = 0, tStart = 0, tRaf = 0, locked = true;
-    const LIMIT = 6000;
+    const LIMIT = matchMedia('(pointer: coarse)').matches ? 10000 : 8000;
     arena.classList.add('idle');
     const drawRound = () => {
       const R0 = ROUNDS[r]; locked = false;
@@ -501,11 +501,14 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
       $('[data-endt]').textContent = you === 5 ? 'Perfect. You routed like MoneyBee.' : `You matched the router ${you} of 5 times.`;
       endEl.hidden = false; unlock('router', $('[data-endt]'));
     };
-    const start = () => { r = 0; you = 0; mb = 0; $('[data-you]').textContent = 0; $('[data-mb]').textContent = 0; endEl.hidden = true; startBtn.hidden = true; arena.classList.remove('idle'); drawRound(); };
+    const start = () => { arena.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'center' }); r = 0; you = 0; mb = 0; $('[data-you]').textContent = 0; $('[data-mb]').textContent = 0; endEl.hidden = true; startBtn.hidden = true; arena.classList.remove('idle'); drawRound(); };
     startBtn.addEventListener('click', start);
     $('[data-again]', arena).addEventListener('click', start);
-    // idle preview of round one
-    const R0 = ROUNDS[0]; optsEl.innerHTML = R0.o.map(([n, d]) => `<div class="g-opt"><b>${n}</b><span>${d}</span></div>`).join('');
+    // idle preview of round one: tapping a tile also starts the game
+    const R0 = ROUNDS[0]; optsEl.innerHTML = R0.o.map(([n, d]) => `<div class="g-opt" role="button" tabindex="0"><b>${n}</b><span>${d}</span></div>`).join('');
+    $$('.g-opt', optsEl).forEach((t) => t.addEventListener('click', start));
+    // keep the honey counter out of the way while the game is on screen
+    new IntersectionObserver((es) => hud.classList.toggle('away', es[0].isIntersecting), { threshold: 0.25 }).observe(arena);
   }
 
   // =====================================================================
