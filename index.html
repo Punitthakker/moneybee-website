@@ -416,6 +416,48 @@
       </div>
       <p class="talk-contact"><a href="mailto:pt@moneybee.world">pt@moneybee.world</a> · <a href="https://wa.me/971558612001" target="_blank" rel="noopener">+971 55 861 2001</a></p>
     </div>
+
+    <div class="demo" id="demo">
+      <div class="demo-copy">
+        <h3>Book a demo</h3>
+        <p>Tell us a little about your business and we will come back within one working day with a time that suits you.</p>
+      </div>
+      <form class="demo-form" name="demo" method="POST" action="/demo/thanks/" data-netlify="true" netlify-honeypot="company-site" data-demo>
+        <input type="hidden" name="form-name" value="demo">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="company-site" tabindex="-1" autocomplete="off"></label></p>
+        <div class="f-row">
+          <label><span>Your name</span><input name="name" type="text" autocomplete="name" required></label>
+          <label><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <div class="f-row">
+          <label><span>Company</span><input name="company" type="text" autocomplete="organization" required></label>
+          <label><span>Country</span><input name="country" type="text" autocomplete="country-name" placeholder="UAE, KSA, India…"></label>
+        </div>
+        <label><span>What would you like to see?</span>
+          <select name="interest" required>
+            <option value="" disabled selected>Choose one</option>
+            <option>Payment orchestration</option>
+            <option>Checkout, payment links and QR</option>
+            <option>MoneyBee Lite app</option>
+            <option>Agentic merchant onboarding</option>
+            <option>Risk, AML and screening</option>
+            <option>Crypto acceptance</option>
+            <option>Card issuing</option>
+            <option>White-label Payment OS for a bank or PSP</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label><span>Anything we should know? <em>(optional)</em></span><textarea name="message" rows="3" placeholder="Monthly volume, current providers, markets…"></textarea></label>
+        <div class="f-foot">
+          <button class="btn gold lg" type="submit">Request a demo</button>
+          <p class="f-note">We reply from pt@moneybee.world. No newsletters, no sharing of your details. <a href="/legal/privacy/">Privacy</a></p>
+        </div>
+        <div class="f-done" hidden role="status">
+          <b>Thanks, we have your request.</b>
+          <span>Expect a reply within one working day. In a hurry? <a href="https://wa.me/971558612001" target="_blank" rel="noopener">WhatsApp us</a>.</span>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 

@@ -601,3 +601,19 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
 
   onScroll();
 })();
+
+// ---------- book a demo: submit in place, fall back to a normal POST ----------
+(() => {
+  const f = document.querySelector('[data-demo]'); if (!f || !window.fetch) return;
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!f.reportValidity()) return;
+    f.classList.add('sending');
+    try {
+      const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() });
+      if (!r.ok) throw new Error(r.status);
+      f.classList.remove('sending'); f.classList.add('done');
+      const done = f.querySelector('.f-done'); done.hidden = false; done.focus && done.focus();
+    } catch (err) { f.classList.remove('sending'); f.submit(); }
+  });
+})();
