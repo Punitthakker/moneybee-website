@@ -5,6 +5,32 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   let paused = reduce.matches;
 
+  // ---------- strings for the Arabic site (/ar/). English is the key. ----------
+  const AR = {
+    'Rule: lowest cost': 'القاعدة: الأقل تكلفة', 'Rule: best success rate': 'القاعدة: أعلى نسبة نجاح', 'Rule: local currency': 'القاعدة: العملة المحلية', 'Rule: ticket size': 'القاعدة: حجم العملية', 'Rule: local method': 'القاعدة: وسيلة الدفع المحلية', 'Rule: crypto rail': 'القاعدة: مسار العملات الرقمية',
+    'Soft decline: cascading': 'رفض مؤقت: إعادة التوجيه', 'Recovered and approved': 'تمت الاستعادة والموافقة', 'Approved': 'تمت الموافقة', 'Play motion': 'تشغيل الحركة', 'Pause motion': 'إيقاف الحركة',
+    'Dubai': 'دبي', 'New York': 'نيويورك', 'Mumbai': 'مومباي', 'Riyadh': 'الرياض', 'Amsterdam': 'أمستردام', 'Tron network': 'شبكة ترون', 'London': 'لندن', 'Abu Dhabi': 'أبوظبي',
+    'Matching': 'جارٍ المطابقة', 'Matched': 'مطابق', 'Review': 'مراجعة',
+    'Explorer': 'المستكشف', 'Visit six sections': 'زُر ستة أقسام', 'Hive keeper': 'حارس الخلية', 'Tap six honeycomb cells': 'اضغط ست خلايا في قرص العسل', 'Router': 'الموجّه', 'Finish Beat the router': 'أكمل لعبة تحدّي الموجّه',
+    'Developer': 'المطوّر', 'Switch the code language': 'بدّل لغة الكود', 'Film buff': 'عاشق الأفلام', 'Watch 10 seconds of the film': 'شاهد 10 ثوانٍ من الفيلم', 'Night bee': 'نحلة الليل', 'Try the other theme': 'جرّب المظهر الآخر',
+    'Unlocked': 'مفتوح', 'Coin unlocked: ': 'فتحت عملة: ', ' honey · ': ' عسل · ', ' of 6 coins': ' من 6 عملات', 'Queen bee': 'ملكة النحل', 'You know MoneyBee better than most. Let’s talk?': 'تعرف MoneyBee أكثر من معظم الناس. نتحدث؟',
+    'Acquirer UAE': 'بنك مستحوذ في الإمارات', 'Acquirer KSA': 'بنك مستحوذ في السعودية', 'Global acquirer': 'بنك مستحوذ عالمي', 'Acquirer EU': 'بنك مستحوذ في أوروبا', 'Acquirer US': 'بنك مستحوذ في أمريكا', 'Card acquirer': 'مستحوذ بطاقات', 'UPI rail': 'مسار UPI', 'Crypto rail': 'مسار العملات الرقمية',
+    'Acquirer A': 'المستحوذ أ', 'Acquirer B': 'المستحوذ ب', 'Acquirer C': 'المستحوذ ج', 'Ethereum rail': 'شبكة إيثيريوم', 'Tron rail': 'شبكة ترون',
+    '2.1% · no mada': '2.1% · لا يدعم مدى', '1.6% · 96% approved': '1.6% · قبول 96%', '2.9% · 91% approved': '2.9% · قبول 91%', '2.1% · 88% approved': '2.1% · قبول 88%', '2.4% · 93% approved': '2.4% · قبول 93%', '2.2% · 97% approved': '2.2% · قبول 97%',
+    '2.5% · cards only': '2.5% · بطاقات فقط', '0.4% · 98% approved': '0.4% · قبول 98%', '1.0% · USDT only': '1.0% · USDT فقط', '2.0% · 81% today': '2.0% · قبول 81% اليوم', '2.4% · 96% today': '2.4% · قبول 96% اليوم', '2.2% · timing out': '2.2% · انتهاء مهلة',
+    'network fee ~ $4': 'رسوم الشبكة ~ 4$', 'network fee ~ $1': 'رسوم الشبكة ~ 1$', 'cannot take USDT': 'لا يقبل USDT',
+    'mada is a Saudi debit network. The KSA acquirer takes it, and it is also the cheapest.': 'مدى شبكة خصم سعودية. المستحوذ السعودي يقبلها، وهو الأقل تكلفة أيضاً.',
+    'Local acquiring lifts approvals. A US card is approved more often by a US acquirer.': 'الاستحواذ المحلي يرفع نسبة القبول. البطاقة الأمريكية تُقبل أكثر لدى مستحوذ أمريكي.',
+    'UPI is a bank rail in India. Cheapest and most approved, no card needed.': 'UPI مسار بنكي في الهند. الأرخص والأعلى قبولاً، دون حاجة لبطاقة.',
+    'Cheapest is not always best. Acquirer A is declining today, so a declined sale costs more than 0.4%.': 'الأرخص ليس الأفضل دائماً. المستحوذ أ يرفض كثيراً اليوم، والعملية المرفوضة تكلّف أكثر من 0.4%.',
+    'Same stablecoin, different network. Tron settles fast with a lower fee.': 'العملة المستقرة نفسها، لكن الشبكة مختلفة. ترون تسوّي بسرعة وبرسوم أقل.',
+    'Round ': 'الجولة ', ' of ': ' من ', 'Which provider would you send this payment to?': 'إلى أي مزوّد سترسل هذه الدفعة؟', 'Same call as MoneyBee. ': 'القرار نفسه الذي اتخذته MoneyBee. ', 'Too slow. ': 'تأخرت. ', 'MoneyBee chose differently. ': 'اختارت MoneyBee خياراً مختلفاً. ',
+    'Perfect. You routed like MoneyBee.': 'ممتاز. وجّهت الدفعات مثل MoneyBee.', 'You matched the router ': 'طابقت الموجّه ', ' of 5 times.': ' من 5 مرات.',
+    'Play with sound': 'شغّل مع الصوت', 'Mute': 'كتم الصوت',
+  };
+  const t = (s) => (document.documentElement.lang === 'ar' && AR[s]) || s;
+
+
   // ---------- theme ----------
   $('.theme').addEventListener('click', () => {
     const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -81,10 +107,10 @@
     const i = step++ % TX.length, [first, fallback] = ROUTE[i];
     reset(); layoutWires();
     tx.classList.add('swap'); await wait(250);
-    $('[data-m]').textContent = TX[i][0]; $('[data-a]').textContent = TX[i][1]; $('[data-c]').textContent = TX[i][2];
+    $('[data-m]').textContent = TX[i][0]; $('[data-a]').textContent = TX[i][1]; $('[data-c]').textContent = t(TX[i][2]);
     srcs.forEach((s, k) => s.classList.toggle('on', k === SRC[i]));
     tx.classList.remove('swap');
-    $('[data-rule]').textContent = RULES[i];
+    $('[data-rule]').textContent = t(RULES[i]);
     await travel(pIn, win, 900);
     core.classList.remove('hit'); void core.offsetWidth; core.classList.add('hit');
     const t0 = performance.now();
@@ -92,7 +118,7 @@
       wires[first].classList.add('dead');
       await travel(pBad, wires[first], 700);
       provs[first].classList.add('fail');
-      $('[data-rule]').textContent = 'Soft decline: cascading';
+      $('[data-rule]').textContent = t('Soft decline: cascading');
       await wait(350);
     }
     const win2 = fallback >= 0 ? fallback : first;
@@ -100,7 +126,7 @@
     await travel(pOut, wires[win2], 800);
     provs[win2].classList.add('ok');
     $('[data-ms]').textContent = String(Math.round(140 + Math.random() * 80 + (fallback >= 0 ? 90 : 0)));
-    $('[data-ok]').textContent = fallback >= 0 ? 'Recovered and approved' : 'Approved';
+    $('[data-ok]').textContent = t(fallback >= 0 ? 'Recovered and approved' : 'Approved');
     await wait(1700);
     cycle();
   }
@@ -112,22 +138,22 @@
     if (!paused && !document.hidden) {
       const i = step++ % TX.length, [first, fallback] = ROUTE[i];
       reset(); tx.classList.add('swap'); await wait(250);
-      $('[data-m]').textContent = TX[i][0]; $('[data-a]').textContent = TX[i][1]; $('[data-c]').textContent = TX[i][2];
+      $('[data-m]').textContent = TX[i][0]; $('[data-a]').textContent = TX[i][1]; $('[data-c]').textContent = t(TX[i][2]);
       srcs.forEach((s, k) => s.classList.toggle('on', k === SRC[i])); tx.classList.remove('swap');
-      $('[data-rule]').textContent = RULES[i]; core.classList.remove('hit'); void core.offsetWidth; core.classList.add('hit');
+      $('[data-rule]').textContent = t(RULES[i]); core.classList.remove('hit'); void core.offsetWidth; core.classList.add('hit');
       await wait(600);
-      if (fallback >= 0) { provs[first].classList.add('fail'); $('[data-rule]').textContent = 'Soft decline: cascading'; await wait(600); }
+      if (fallback >= 0) { provs[first].classList.add('fail'); $('[data-rule]').textContent = t('Soft decline: cascading'); await wait(600); }
       provs[fallback >= 0 ? fallback : first].classList.add('ok');
-      $('[data-ok]').textContent = fallback >= 0 ? 'Recovered and approved' : 'Approved';
+      $('[data-ok]').textContent = t(fallback >= 0 ? 'Recovered and approved' : 'Approved');
     }
     timer = setTimeout(mobileCycle, 2200);
   }
   const pauseBtn = $('.pause');
-  if (reduce.matches) { pauseBtn.textContent = 'Play motion'; pauseBtn.setAttribute('aria-pressed', 'true'); }
+  if (reduce.matches) { pauseBtn.textContent = t('Play motion'); pauseBtn.setAttribute('aria-pressed', 'true'); }
   pauseBtn.addEventListener('click', () => {
     const wasFresh = reduce.matches && step === 0;
     paused = !paused;
-    pauseBtn.textContent = paused ? 'Play motion' : 'Pause motion';
+    pauseBtn.textContent = t(paused ? 'Play motion' : 'Pause motion');
     pauseBtn.setAttribute('aria-pressed', String(paused));
     document.documentElement.classList.toggle('still', paused);
     if (wasFresh && !paused) (heroVisible() ? cycle : mobileCycle)();
@@ -368,10 +394,10 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
   if (rows.length) {
     const final = rows.map((r) => $('.st', r));
     const runRecon = () => {
-      final.forEach((st) => { st.className = 'st'; st.textContent = 'Matching'; });
+      final.forEach((st) => { st.className = 'st'; st.textContent = t('Matching'); });
       rows.forEach((r, i) => setTimeout(() => {
         r.classList.remove('scan'); void r.offsetWidth; r.classList.add('scan');
-        setTimeout(() => { const st = final[i]; st.textContent = st.dataset.st === 'ok' ? 'Matched' : 'Review'; st.classList.add(st.dataset.st); }, 520);
+        setTimeout(() => { const st = final[i]; st.textContent = t(st.dataset.st === 'ok' ? 'Matched' : 'Review'); st.classList.add(st.dataset.st); }, 520);
       }, 300 + i * 650));
     };
     if (reduce.matches) final.forEach((st) => st.classList.add(st.dataset.st));
@@ -394,7 +420,7 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
   const pill = $('.hud-pill'), panel = $('#hud-panel');
   const renderHud = () => {
     honeyEl.textContent = hive.honey; coinsEl.textContent = `${hive.coins.length}/6`;
-    list.innerHTML = COINS.map(([id, name, how]) => `<li class="${hive.coins.includes(id) ? 'got' : ''}"><svg viewBox="0 0 26 26"><polygon points="${HEXPTS}"/></svg>${name}<small>${hive.coins.includes(id) ? 'Unlocked' : how}</small></li>`).join('');
+    list.innerHTML = COINS.map(([id, name, how]) => `<li class="${hive.coins.includes(id) ? 'got' : ''}"><svg viewBox="0 0 26 26"><polygon points="${HEXPTS}"/></svg>${t(name)}<small>${hive.coins.includes(id) ? t('Unlocked') : t(how)}</small></li>`).join('');
   };
   pill.addEventListener('click', () => { const open = panel.hidden; panel.hidden = !open; pill.setAttribute('aria-expanded', String(open)); });
   document.addEventListener('click', (e) => { if (!hud.contains(e.target)) { panel.hidden = true; pill.setAttribute('aria-expanded', 'false'); } });
@@ -424,8 +450,8 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
   const unlock = (id, from) => {
     if (hive.coins.includes(id)) return;
     hive.coins.push(id); const c = COINS.find((x) => x[0] === id);
-    earn(20, from); toast(`Coin unlocked: ${c[1]}`, `+20 honey · ${hive.coins.length} of 6 coins`);
-    if (hive.coins.length === 6) setTimeout(() => { toast('Queen bee', 'You know MoneyBee better than most. Let’s talk?'); burst(innerWidth / 2, innerHeight / 2, 160); }, 1800);
+    earn(20, from); toast(t('Coin unlocked: ') + t(c[1]), '+20' + t(' honey · ') + hive.coins.length + t(' of 6 coins'));
+    if (hive.coins.length === 6) setTimeout(() => { toast(t('Queen bee'), t('You know MoneyBee better than most. Let’s talk?')); burst(innerWidth / 2, innerHeight / 2, 160); }, 1800);
     else burst((from || pill).getBoundingClientRect().left + 20, (from || pill).getBoundingClientRect().top + 20, 40);
   };
 
@@ -479,10 +505,10 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
     const drawRound = () => {
       const R0 = ROUNDS[r]; locked = false;
       payEl.classList.add('swap');
-      setTimeout(() => { $('[data-gm]').textContent = R0.m; $('[data-ga]').textContent = R0.a; $('[data-gc]').textContent = R0.c; payEl.classList.remove('swap'); }, 220);
-      $('[data-round]').textContent = `Round ${r + 1} of ${ROUNDS.length}`;
-      optsEl.innerHTML = R0.o.map(([n, d], i) => `<button class="g-opt" type="button" data-i="${i}"><span class="mb-pick">MoneyBee</span><b>${n}</b><span>${d}</span></button>`).join('');
-      why.textContent = 'Which provider would you send this payment to?';
+      setTimeout(() => { $('[data-gm]').textContent = R0.m; $('[data-ga]').textContent = R0.a; $('[data-gc]').textContent = t(R0.c); payEl.classList.remove('swap'); }, 220);
+      $('[data-round]').textContent = t('Round ') + (r + 1) + t(' of ') + ROUNDS.length;
+      optsEl.innerHTML = R0.o.map(([n, d], i) => `<button class="g-opt" type="button" data-i="${i}"><span class="mb-pick">MoneyBee</span><b>${t(n)}</b><span>${t(d)}</span></button>`).join('');
+      why.textContent = t('Which provider would you send this payment to?');
       $$('.g-opt', optsEl).forEach((b) => b.addEventListener('click', () => pickOpt(+b.dataset.i, b)));
       tStart = performance.now(); cancelAnimationFrame(tRaf);
       const tick = (now) => { if (locked) return; const k = 1 - (now - tStart) / LIMIT; timerEl.style.transform = `scaleX(${Math.max(0, k)})`; if (k <= 0) pickOpt(-1); else tRaf = requestAnimationFrame(tick); };
@@ -493,19 +519,19 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
       const R0 = ROUNDS[r], bs = $$('.g-opt', optsEl);
       bs.forEach((b, k) => { b.disabled = true; if (k === R0.best) b.classList.add('best'); else if (k !== i) b.classList.add('off'); });
       mb++; $('[data-mb]').textContent = mb;
-      if (i === R0.best) { you++; $('[data-you]').textContent = you; bs[i].classList.add('right'); why.textContent = 'Same call as MoneyBee. ' + R0.why; earn(10, bs[i]); }
-      else { if (i >= 0) bs[i].classList.add('wrong'); why.textContent = (i < 0 ? 'Too slow. ' : 'MoneyBee chose differently. ') + R0.why; }
+      if (i === R0.best) { you++; $('[data-you]').textContent = you; bs[i].classList.add('right'); why.textContent = t('Same call as MoneyBee. ') + t(R0.why); earn(10, bs[i]); }
+      else { if (i >= 0) bs[i].classList.add('wrong'); why.textContent = t(i < 0 ? 'Too slow. ' : 'MoneyBee chose differently. ') + t(R0.why); }
       setTimeout(() => { r++; if (r < ROUNDS.length) drawRound(); else finish(); }, 2600);
     };
     const finish = () => {
-      $('[data-endt]').textContent = you === 5 ? 'Perfect. You routed like MoneyBee.' : `You matched the router ${you} of 5 times.`;
+      $('[data-endt]').textContent = you === 5 ? t('Perfect. You routed like MoneyBee.') : t('You matched the router ') + you + t(' of 5 times.');
       endEl.hidden = false; unlock('router', $('[data-endt]'));
     };
     const start = () => { arena.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'center' }); r = 0; you = 0; mb = 0; $('[data-you]').textContent = 0; $('[data-mb]').textContent = 0; endEl.hidden = true; startBtn.hidden = true; arena.classList.remove('idle'); drawRound(); };
     startBtn.addEventListener('click', start);
     $('[data-again]', arena).addEventListener('click', start);
     // idle preview of round one: tapping a tile also starts the game
-    const R0 = ROUNDS[0]; optsEl.innerHTML = R0.o.map(([n, d]) => `<div class="g-opt" role="button" tabindex="0"><b>${n}</b><span>${d}</span></div>`).join('');
+    const R0 = ROUNDS[0]; optsEl.innerHTML = R0.o.map(([n, d]) => `<div class="g-opt" role="button" tabindex="0"><b>${t(n)}</b><span>${t(d)}</span></div>`).join('');
     $$('.g-opt', optsEl).forEach((t) => t.addEventListener('click', start));
     // keep the honey counter out of the way while the game is on screen
     new IntersectionObserver((es) => hud.classList.toggle('away', es[0].isIntersecting), { threshold: 0.25 }).observe(arena);
@@ -526,7 +552,7 @@ pay = mb.<span class="f">create_payment</span>(<span class="f">Amount</span>(<sp
     });
     soundBtn.addEventListener('click', () => {
       film.muted = !film.muted; if (!film.muted) { film.currentTime = 0; film.play().catch(() => {}); }
-      $('span', soundBtn).textContent = film.muted ? 'Play with sound' : 'Mute';
+      $('span', soundBtn).textContent = t(film.muted ? 'Play with sound' : 'Mute');
     });
   }
 

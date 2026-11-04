@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
+<title>MoneyBee | نظام تشغيل المدفوعات</title>
+<meta name="description" content="MoneyBee هي نظام تشغيل المدفوعات للتجارة العالمية. اقبل، وجّه، سوِّ، أصدر وطابق الأموال على دفتر واحد، عبر أكثر من 120 موصّلاً.">
+<meta name="theme-color" content="#F4EFE4">
+<meta property="og:title" content="MoneyBee | نظام تشغيل المدفوعات">
+<meta property="og:description" content="MoneyBee هي نظام تشغيل المدفوعات للتجارة العالمية. اقبل، وجّه، سوِّ، أصدر وطابق الأموال على دفتر واحد، عبر أكثر من 120 موصّلاً.">
+<meta property="og:image" content="https://moneybee.world/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://moneybee.world/ar/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MoneyBee">
+<meta property="og:locale" content="ar_AE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://moneybee.world/ar/">
+<link rel="alternate" hreflang="en" href="https://moneybee.world/">
+<link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/">
+<link rel="alternate" hreflang="x-default" href="https://moneybee.world/">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/PlexArabic-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/InterTight-500Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/InterTight-300Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<script>
+  // Pick up the saved theme before first paint.
+  try { var t = localStorage.getItem('mb-theme'); if (t) document.documentElement.dataset.theme = t; else if (matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<!-- HEADER START -->
+<header class="bar" id="top">
+  <div class="bar-in">
+    <a class="brand" href="/" aria-label="الصفحة الرئيسية MoneyBee">
+      <svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/><path d="M7 10H19M6 13H20M7 16H19"/></svg>
+      <span>money<b>bee</b></span>
+    </a>
+    <nav class="nav" aria-label="الرئيسية">
+      <a href="/ar/products/">المنتجات</a>
+      <a href="/ar/#platform">المنصة</a>
+      <a href="/docs/">المطوّرون</a>
+      <a href="/ar/company/">الشركة</a>
+      <a href="/ar/#play">العب</a>
+    </nav>
+    <div class="bar-actions">
+      <button class="theme" type="button" aria-label="تبديل المظهر الفاتح أو الداكن">
+        <svg viewBox="0 0 24 24" class="sun" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        <svg viewBox="0 0 24 24" class="moon" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      </button>
+      <a class="lang" href="/" lang="en" hreflang="en" aria-label="English">EN</a>
+      <a class="btn ink" href="/ar/#talk">لنتحدث</a>
+      <button class="menu" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="sheet"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="sheet" id="sheet" hidden>
+    <a href="/ar/products/">المنتجات</a><a href="/ar/#platform">المنصة</a><a href="/docs/">المطوّرون</a><a href="/ar/company/">الشركة</a><a href="/ar/#play">العب اللعبة</a><a href="/" lang="en">English</a>
+    <a class="btn ink" href="/ar/#talk">لنتحدث</a>
+  </div>
+</header>
+<!-- HEADER END -->
+
+<main id="main">
+
+<!-- HERO: one authored moment - a payment finds its route -->
+<section class="hero">
+  <canvas class="silk" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="os-tag"><span class="dot"></span>نظام تشغيل المدفوعات <span class="rot" data-rot><b>اقبل محلياً</b><b>اتصل عالمياً</b><b>وجّه بذكاء</b></span></p>
+    <h1 class="h-hero"><span class="line">العالم يتحرك.</span> <span class="line soft">حرّك أموالك معه.</span></h1>
+    <p class="lede">نظام تشغيل واحد للمدفوعات: اقبل، وجّه، سوِّ، أصدر وطابق، عبر أكثر من 120 موصّلاً ودفتر واحد.</p>
+    <div class="ctas">
+      <a class="btn ink lg" href="#talk">لنتحدث</a>
+      <a class="btn ghost lg" href="#platform">استكشف المنصة <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+
+  <div class="stage wrap" aria-label="تقوم MoneyBee بتوجيه الدفعة إلى أفضل مزوّد مع تحويل تلقائي عند الفشل">
+    <div class="flow">
+      <div class="col in">
+        <div class="tx" data-tx>
+          <span class="tx-m" data-m>Apple Pay</span>
+          <span class="tx-a" data-a>AED 1,240.00</span>
+          <span class="tx-c" data-c>Dubai</span>
+        </div>
+        <ul class="src">
+          <li>صفحة الدفع</li><li>رابط دفع</li><li>QR</li><li>فاتورة</li><li>API</li>
+        </ul>
+      </div>
+
+      <svg class="wires" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="g-wire" x1="0" x2="1"><stop offset="0" stop-color="var(--gold)" stop-opacity=".15"/><stop offset=".5" stop-color="var(--gold)" stop-opacity=".65"/><stop offset="1" stop-color="var(--gold)" stop-opacity=".15"/></linearGradient>
+        </defs>
+        <path id="w-in" d="M40 210 C 220 210, 300 210, 440 210"/>
+        <path id="w-a" d="M560 210 C 680 210, 720 70, 960 70"/>
+        <path id="w-b" d="M560 210 C 700 210, 760 165, 960 165"/>
+        <path id="w-c" d="M560 210 C 700 210, 760 260, 960 260"/>
+        <path id="w-d" d="M560 210 C 680 210, 720 355, 960 355"/>
+        <circle class="pulse" r="7" id="p-in"/>
+        <circle class="pulse" r="7" id="p-out"/>
+        <circle class="pulse bad" r="7" id="p-bad"/>
+      </svg>
+
+      <div class="core" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="hexcore">
+          <polygon class="h1" points="100,8 180,54 180,146 100,192 20,146 20,54"/>
+          <polygon class="h2" points="100,34 157,67 157,133 100,166 43,133 43,67"/>
+          <g class="bars"><path d="M70 82H130M62 100H138M70 118H130"/></g>
+        </svg>
+        <span class="core-l">MoneyBee OS</span>
+        <span class="core-s" data-rule>القاعدة: الأقل تكلفة</span>
+      </div>
+
+      <div class="col out">
+        <div class="prov" data-p="0"><i></i>مستحوذ الإمارات<em>2.1%</em></div>
+        <div class="prov" data-p="1"><i></i>مستحوذ أوروبا<em>2.4%</em></div>
+        <div class="prov" data-p="2"><i></i>وسيلة محلية<em>1.8%</em></div>
+        <div class="prov" data-p="3"><i></i>مسار رقمي<em>1.0%</em></div>
+      </div>
+    </div>
+    <div class="ticker" aria-live="off">
+      <span class="tk"><b data-ok>تمت الموافقة</b> خلال <span data-ms>212</span> م.ث</span>
+      <span class="tk dim">توجيه ذكي · إعادة توجيه · دفتر واحد</span>
+      <button class="pause" type="button" aria-pressed="false">إيقاف الحركة</button>
+    </div>
+  </div>
+</section>
+
+<!-- RAILS -->
+<section class="rails" aria-label="وسائل الدفع والمسارات">
+  <div class="marquee">
+    <div class="track">
+      <span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Google Pay</span><span>Samsung Pay</span><span>mada</span><span>UPI</span><span>Aani</span><span>e&amp; money</span><span>Tabby</span><span>Tamara</span><span>Alipay+</span><span>WeChat Pay</span><span>iDEAL</span><span>PayPal</span><span>USDT</span><span>USDC</span><span>BTC</span><span>ETH</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM: honeycomb of modules -->
+<section class="platform" id="platform">
+  <div class="wrap">
+    <h2 class="h2 reveal">كل ما تفعله الأموال.<br><span class="soft">نظام تشغيل واحد.</span></h2>
+    <div class="comb" role="list">
+      <div class="cell" role="listitem" tabindex="0" data-d="بطاقات ومحافظ ووسائل محلية وعملات رقمية في صفحة دفع واحدة"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h4"/></svg><b>اقبل</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="وجّه حسب التكلفة أو نسبة النجاح أو العملة أو حجم العملية، مع تحويل تلقائي عند الفشل"><svg viewBox="0 0 24 24"><path d="M4 12h6l4-5h6M14 17h6M10 12l4 5"/><circle cx="4" cy="12" r="1.5"/></svg><b>وجّه</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="قواعد السرعة والحدود و3DS الديناميكي قبل استدعاء أي مزوّد"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><b>المخاطر</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="دفتر قيد مزدوج خلف كل دفعة وتحويل ورسم"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><b>الدفتر</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="تسوية يومية مع احتياطيات وتقسيم واعتماد ثنائي"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg><b>التسوية</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="ادفع للموردين والبائعين والموظفين، فردياً أو بالجملة"><svg viewBox="0 0 24 24"><path d="M4 17h12M14 7l6 5-6 5M4 7h8"/></svg><b>المدفوعات الصادرة</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="بطاقات فيزا تُموَّل من محافظ رقمية أو حسابات بنكية، عبر ekka"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M15 10h3M6 14h5"/><circle cx="16" cy="14" r="1.2"/></svg><b>إصدار البطاقات</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="USDT وUSDC وBTC وETH، تُسوّى بعملة تقليدية"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M10 8h4a2 2 0 0 1 0 4h-4h5a2 2 0 0 1 0 4h-5zM11 6v2M13 6v2M11 16v2M13 16v2"/></svg><b>العملات الرقمية</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="أسعار صرف لحظية وأرصدة متعددة العملات"><svg viewBox="0 0 24 24"><path d="M5 8h13l-3-3M19 16H6l3 3"/></svg><b>الصرف</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="اشتراكات وفواتير وخطط دفع"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 12-5l2 2M19 12a7 7 0 0 1-12 5l-2-2M19 4v5h-5M5 20v-5h5"/></svg><b>الفوترة</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="تتبع النزاعات وتوثيقها وحجزها من المدفوعات الصادرة"><svg viewBox="0 0 24 24"><path d="M6 21V4M6 4h11l-2 4 2 4H6"/></svg><b>النزاعات</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="مطابقة ثلاثية بين المعالج والبنك والدفتر، عبر SoleAI"><svg viewBox="0 0 24 24"><path d="M3 12l4 4 8-8M11 16l1 1 9-9"/></svg><b>المطابقة</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="تحقق ذكي من الشركات: ارفع الرخصة، واحصل على تاجر مفعّل"><svg viewBox="0 0 24 24"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 20c.8-3.5 3.4-5.5 6.5-5.5s4.5 1 5.5 2.5M15 18l2 2 4-4"/></svg><b>التسجيل</b></div>
+      <div class="cell" role="listitem" tabindex="0" data-d="مراقبة المعاملات وإدارة الحالات وتقارير goAML"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><b>مكافحة غسل الأموال</b></div>
+    </div>
+    <p class="comb-note" aria-live="polite" data-note>اضغط على خلية لترى ما تفعله.</p>
+  </div>
+</section>
+
+<!-- PRODUCTS: real product shots -->
+<section class="products" id="products">
+  <div class="wrap split">
+    <div class="copy">
+      <h2 class="h2 reveal">اقبض بأربع طرق.<br><span class="soft">وشاهدها تصل في تطبيق واحد.</span></h2>
+      <ul class="ways">
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18"/></svg>صفحة الدفع</li>
+        <li><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>رابط دفع</li>
+        <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2M20 14v6h-6"/></svg>QR</li>
+        <li><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7"/></svg>فاتورة</li>
+      </ul>
+      <p class="small">تطبيق MoneyBee Lite لنظامي iOS وAndroid. المدفوعات والروابط والتحويلات والنزاعات في جيبك، بالعربية والإنجليزية.</p>
+    </div>
+    <div class="phones" aria-label="تطبيق MoneyBee Lite وصفحة دفع العميل">
+      <figure class="phone p1"><img src="/assets/img/pay-page.webp" alt="صفحة دفع العميل تعرض البطاقات والمحافظ والوسائل المحلية" width="390" height="844" loading="lazy"></figure>
+      <figure class="phone p2"><img src="/assets/img/app-today.webp" alt="شاشة اليوم في MoneyBee Lite مع المبيعات وهدف قرص العسل وزر رابط الدفع" width="390" height="844" loading="lazy"></figure>
+      <figure class="phone p3"><img src="/assets/img/app-payments.webp" alt="قائمة المدفوعات عبر فيزا وApple Pay وUPI وiDEAL ومدى" width="390" height="844" loading="lazy"></figure>
+      <span class="chip c1">+ AED 929.00 · Visa</span>
+      <span class="chip c2">UPI · INR 13,165.50</span>
+      <span class="chip c3">تُسوّى غداً 6 مساءً</span>
+    </div>
+  </div>
+</section>
+
+<!-- SUITE: every product, one OS -->
+<section class="suite" id="suite">
+  <div class="wrap">
+    <h2 class="h2 reveal">كل منتج.<br><span class="soft">نظام تشغيل واحد.</span></h2>
+    <div class="bento">
+      <a class="tile t-lite" href="/ar/products/#lite"><div class="tx-in"><small>التطبيق</small><b>MoneyBee Lite</b><span>عملك في جيبك. iOS وAndroid.</span></div><img src="/assets/img/app-today.webp" alt="شاشة اليوم في MoneyBee Lite" loading="lazy" width="390" height="844"></a>
+      <a class="tile t-links" href="/ar/products/#links"><div class="tx-in"><small>اقبض</small><b>روابط الدفع وQR</b><span>اكتب المبلغ، شاركه على واتساب، انتهى.</span></div><img src="/assets/img/app-newlink.webp" alt="شاشة إنشاء رابط دفع جديد مع العملات والأسباب السريعة" loading="lazy" width="390" height="844"></a>
+      <a class="tile t-onb" href="/ar/products/#onboarding"><div class="tx-in"><small>بالذكاء الاصطناعي</small><b>تسجيل في دقائق</b><span>ارفع الرخصة والهوية الإماراتية. الذكاء الاصطناعي يكمل الباقي.</span></div><img src="/assets/img/app-onboard.webp" alt="قراءة المستندات وتعبئة الحقول تلقائياً" loading="lazy" width="390" height="844"></a>
+      <a class="tile t-orch" href="/ar/products/#orchestration"><div class="tx-in"><small>النواة</small><b>تنسيق المدفوعات</b><span>أكثر من 120 موصّلاً، توجيه ذكي، إعادة توجيه.</span></div><img src="/assets/img/console-routing.webp" alt="كتالوج الموصّلات مرتباً حسب التكلفة" loading="lazy" width="1800" height="1125"></a>
+      <a class="tile t-mini" href="/ar/products/#checkout"><b>صفحة الدفع</b><span>الوسائل المحلية أولاً</span></a>
+      <a class="tile t-mini" href="/ar/products/#crypto"><b>العملات الرقمية</b><span>USDT وUSDC وBTC وETH</span></a>
+      <a class="tile t-mini" href="/ar/products/#payouts"><b>المدفوعات الصادرة</b><span>بالجملة، مقسّمة، باعتماد ثنائي</span></a>
+      <a class="tile t-mini" href="/ar/products/#risk"><b>المخاطر ومكافحة غسل الأموال</b><span>3DS، قواعد السرعة، goAML</span></a>
+      <a class="tile t-mini" href="/ar/products/#cards"><b>إصدار البطاقات</b><span>مع ekka</span></a>
+      <a class="tile t-mini" href="/ar/products/#recon"><b>المطابقة</b><span>مع SoleAI</span></a>
+      <a class="tile t-mini sub" href="/ar/products/#substrate"><b>Substrate ERP</b><span>قيمة مضافة للشركات الصغيرة والمتوسطة</span></a>
+      <a class="tile t-mini all" href="/ar/products/"><b>كل المنتجات</b><span>اعرض الكل ←</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT FOR -->
+<section class="built" aria-label="لمن صُممت MoneyBee">
+  <div class="wrap">
+    <div class="who">
+      <span><svg viewBox="0 0 24 24"><path d="M4 11h16M6 11V7a6 6 0 0 1 12 0v4M5 11l1 9h12l1-9"/></svg>المطاعم والمقاهي</span>
+      <span><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 11h-13zM9 7a3 3 0 0 1 6 0"/></svg>التجزئة</span>
+      <span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>التجارة الإلكترونية</span>
+      <span><svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 10-6-3-3 4v-5l9-7"/></svg>السفر وشركات الطيران</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 20c.5-3 2.5-5 5-5s4.5 2 5 5M11 20c.5-3 2.5-5 5-5s4.5 2 5 5"/></svg>المنصات وصنّاع المحتوى</span>
+      <span><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 21h18"/></svg>البنوك ومزوّدو خدمات الدفع، بعلامة بيضاء</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILM -->
+<section class="film" id="film">
+  <div class="wrap split">
+    <div class="copy">
+      <h2 class="h2 reveal">نظام تشغيل المدفوعات<br><span class="soft">في 30 ثانية.</span></h2>
+      <p class="small">التوجيه وصفحة الدفع والتطبيق والمطابقة والكود. شغّل الصوت.</p>
+      <div class="ctas"><button class="btn ink" type="button" data-film-sound><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span>شغّل مع الصوت</span></button>
+      <a class="btn ghost" href="/assets/video/MoneyBee_PaymentOS_Reel.mp4" download>تنزيل MP4</a></div>
+    </div>
+    <div class="film-phone">
+      <video data-film muted playsinline loop preload="none" poster="/assets/video/reel-poster.webp" aria-label="فيلم نظام تشغيل المدفوعات MoneyBee">
+        <source src="/assets/video/MoneyBee_PaymentOS_Reel.mp4" type="video/mp4">
+      </video>
+      <div class="film-ring" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTING / CONSOLE -->
+<section class="console" id="routing">
+  <div class="wrap">
+    <h2 class="h2 reveal center">معقّد خلف الكواليس.<br><span class="soft">واضح بين يديك.</span></h2>
+    <div class="rules" aria-label="معايير التوجيه">
+      <span>التكلفة</span><span>نسبة النجاح</span><span>العملة</span><span>حجم العملية</span><span>نوع الدفع</span><span>وقت اليوم</span><span>الحجم</span><span>شريحة التسعير</span>
+    </div>
+    <div class="browser">
+      <div class="chrome"><i></i><i></i><i></i>
+        <div class="tabs" role="tablist" aria-label="شاشات لوحة التحكم">
+          <button role="tab" aria-selected="true" data-t="0">لوحة المعلومات</button>
+          <button role="tab" aria-selected="false" data-t="1">التوجيه</button>
+          <button role="tab" aria-selected="false" data-t="2">المطابقة</button>
+          <button role="tab" aria-selected="false" data-t="3">التجار</button>
+        </div>
+      </div>
+      <div class="screens">
+        <img class="on" src="/assets/img/console-dashboard.webp" alt="لوحة المشغّل مع إجمالي قيمة المدفوعات ونسبة القبول وأداء التجار" width="1800" height="1125" loading="lazy">
+        <img src="/assets/img/console-routing.webp" alt="الموصّلات والتوجيه مع 124 موصّلاً مرتبة حسب التكلفة" width="1800" height="1125" loading="lazy">
+        <img src="/assets/img/console-recon.webp" alt="المطابقة مع إجماليات المطابق وغير المطابق والفروقات" width="1800" height="1125" loading="lazy">
+        <img src="/assets/img/console-merchants.webp" alt="قائمة التجار مع الطلبات والحسابات المعتمدة" width="1800" height="1125" loading="lazy">
+      </div>
+      <div class="bar-prog" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GAME: beat the router -->
+<section class="game" id="play">
+  <div class="wrap">
+    <h2 class="h2 reveal center">تحدَّ الموجّه.<br><span class="soft">خمس دفعات. اختر أفضل مسار.</span></h2>
+    <div class="arena" data-game>
+      <div class="g-top">
+        <span class="g-round" data-round>الجولة 1 من 5</span>
+        <div class="g-timer" aria-hidden="true"><span data-timer></span></div>
+        <span class="g-score">أنت <b data-you>0</b> · MoneyBee <b data-mb>0</b></span>
+      </div>
+      <div class="g-pay" data-pay>
+        <span class="g-m" data-gm>mada</span><b class="g-a" data-ga>SAR 310.00</b><span class="g-c" data-gc>الرياض</span>
+      </div>
+      <button class="btn g-start" type="button" data-start>ابدأ اللعبة <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></button>
+      <div class="g-opts" data-opts></div>
+      <p class="g-why" data-why aria-live="polite">اضغط ابدأ، ثم اختر مزوّداً لكل دفعة.</p>
+      <div class="g-end" data-end hidden>
+        <b data-endt>طابقت الموجّه 4 من 5 مرات.</b>
+        <span>تتخذ MoneyBee هذا القرار في كل دفعة، في أقل من 100 ميلي ثانية.</span>
+        <button class="btn ink" type="button" data-again>العب مجدداً</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section class="global" id="global">
+  <div class="wrap split rev">
+    <div class="globe-wrap" aria-label="ممرات MoneyBee من دبي إلى العالم">
+      <canvas class="globe" width="640" height="640"></canvas>
+      <span class="city-tag t1">دبي · AED</span><span class="city-tag t2">مومباي · INR</span><span class="city-tag t3">لندن · GBP</span>
+    </div>
+    <div class="copy">
+      <h2 class="h2 reveal">اقبل محلياً.<br><span class="soft">سوِّ عالمياً.</span></h2>
+      <div class="geo">
+        <div><b>محلي</b><span>الأسعار بعملة عميلك</span></div>
+        <div><b>موثوق</b><span>الوسائل التي يستخدمها بالفعل، تظهر أولاً</span></div>
+        <div><b>يومي</b><span>تسوية في رصيد واحد</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPERS -->
+<section class="dev" id="developers">
+  <div class="wrap split">
+    <div class="copy">
+      <h2 class="h2 reveal">عشرة أسطر<br><span class="soft">حتى أول دفعة.</span></h2>
+      <div class="sdks"><span>REST</span><span>Node</span><span>Python</span><span>Java</span><span>PHP</span><span>iOS</span><span>Android</span><span>WooCommerce</span><span>Magento</span><span>OpenCart</span></div>
+      <p class="small">طلبات آمنة التكرار افتراضياً. Webhooks موقّعة. بيئة اختبار يتصرف فيها كل موصّل كما في الواقع. التوثيق بالإنجليزية.</p>
+    </div>
+    <div class="code" aria-label="مثال كود: إنشاء دفعة">
+      <div class="code-top">
+        <div class="ctabs" role="tablist"><button role="tab" aria-selected="true" data-l="node">Node</button><button role="tab" aria-selected="false" data-l="python">Python</button><button role="tab" aria-selected="false" data-l="curl">cURL</button></div>
+        <span class="live-dot">بيئة الاختبار</span>
+      </div>
+<pre class="src-code" data-code><code></code></pre>
+      <div class="resp" data-resp><span class="rk">200 OK</span><pre><code></code></pre></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECONCILIATION -->
+<section class="recon" id="recon">
+  <div class="wrap">
+    <h2 class="h2 reveal center">كل درهم،<br><span class="soft">مطابق بثلاث طرق.</span></h2>
+    <div class="ledger" role="table" aria-label="المطابقة بين المعالج والبنك والدفتر">
+      <div class="lr head" role="row"><span role="columnheader">المرجع</span><span role="columnheader">المعالج</span><span role="columnheader">البنك</span><span role="columnheader">الدفتر</span><span role="columnheader">الحالة</span></div>
+      <div class="lr" role="row"><span>MB-1048</span><span>AED 12,000.00</span><span>AED 12,000.00</span><span>AED 12,000.00</span><span class="st" data-st="ok">مطابق</span></div>
+      <div class="lr" role="row"><span>MB-1049</span><span>USD 1,240.50</span><span>USD 1,240.50</span><span>USD 1,240.50</span><span class="st" data-st="ok">مطابق</span></div>
+      <div class="lr" role="row"><span>MB-1050</span><span>AED 5,000.00</span><span>AED 4,995.00</span><span>AED 5,000.00</span><span class="st" data-st="review">مراجعة</span></div>
+      <div class="lr" role="row"><span>MB-1051</span><span>INR 84,300.00</span><span>INR 84,300.00</span><span>INR 84,300.00</span><span class="st" data-st="ok">مطابق</span></div>
+    </div>
+    <p class="center small mx">إقفال يومي في دقائق، مع SoleAI.</p>
+  </div>
+</section>
+
+<!-- INTEGRATION: before and after, drawn live -->
+<section class="integrate" id="integrate">
+  <div class="wrap">
+    <h2 class="h2 reveal center">تكامل واحد.<br><span class="soft">كل المزوّدين.</span></h2>
+    <div class="ba">
+      <div class="dia without" data-dia="mess">
+        <svg class="dia-svg" aria-hidden="true"></svg>
+        <div class="nd top">عملك</div>
+        <div class="grid6"><div class="nd" data-n="0">المستحوذ أ</div><div class="nd" data-n="1">المستحوذ ب</div><div class="nd" data-n="2">المحافظ</div><div class="nd" data-n="3">UPI ووسائل محلية</div><div class="nd" data-n="4">العملات الرقمية</div><div class="nd" data-n="5">بنوك التحويل</div></div>
+        <p class="dia-cap">6 عقود · 6 لوحات · 6 مطابقات</p>
+      </div>
+      <div class="dia with" data-dia="clean">
+        <svg class="dia-svg" aria-hidden="true"></svg>
+        <p class="dia-tag">مع moneybee</p>
+        <div class="nd top light">عملك</div>
+        <div class="nd hub"><small>واجهة واحدة</small><b>money<span>bee</span></b></div>
+        <div class="grid6"><div class="nd" data-n="0">المستحوذ أ</div><div class="nd" data-n="1">المستحوذ ب</div><div class="nd" data-n="2">المحافظ</div><div class="nd" data-n="3">UPI ووسائل محلية</div><div class="nd" data-n="4">العملات الرقمية</div><div class="nd" data-n="5">بنوك التحويل</div></div>
+        <p class="dia-cap">عقد واحد · لوحة واحدة · مطابقة واحدة</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers" aria-label="أرقام المنصة">
+  <div class="wrap nums">
+    <div><b data-count="120" data-suffix="+">120+</b><span>موصّل</span></div>
+    <div><b data-count="24">24</b><span>وحدة على دفتر واحد</span></div>
+    <div><b data-count="99.99" data-dec="2" data-suffix="%">99.99%</b><span>هدف التوافر</span></div>
+    <div><b data-count="100" data-prefix="&lt;" data-suffix=" ms">&lt;100 ms</b><span>زمن استجابة الواجهة</span></div>
+    <div><b data-count="215">215</b><span>معاملة/ثانية لكل خادم 8/32</span></div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="eco">
+  <div class="wrap">
+    <h2 class="h2 reveal center">نواة واحدة.<br><span class="soft">خلية من الخدمات المضافة.</span></h2>
+    <div class="trio">
+      <a class="orb main" href="#platform"><svg class="lg" viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/><path d="M7 10H19M6 13H20M7 16H19"/></svg><b>money<span>bee</span></b><span class="what">اقبل · وجّه · حوّل</span></a>
+      <a class="orb sole" href="https://soleai.xyz" target="_blank" rel="noopener"><svg class="lg" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="9"/><g><path d="M20 3v5M20 32v5M3 20h5M32 20h5M8 8l3.5 3.5M28.5 28.5L32 32M8 32l3.5-3.5M28.5 11.5L32 8"/></g></svg><b>SoleAI</b><span class="what">المطابقة والتقارير</span><em>soleai.xyz ↗</em></a>
+      <a class="orb ekka" href="https://ekka.world" target="_blank" rel="noopener"><svg class="lg" viewBox="0 0 44 30" aria-hidden="true"><rect x="2" y="2" width="40" height="26" rx="5"/><path d="M2 9h40"/><rect x="7" y="16" width="9" height="6" rx="1.5"/></svg><b>ekka</b><span class="what">بطاقات فيزا من العملات الرقمية أو البنك</span><em>ekka.world ↗</em></a>
+          <a class="orb substrate" href="https://substrate-erp.com" target="_blank" rel="noopener"><svg class="lg" viewBox="0 0 44 40" aria-hidden="true"><path d="M22 4l18 9-18 9-18-9z"/><path d="M4 20l18 9 18-9" opacity=".75"/><path d="M4 27l18 9 18-9" opacity=".5"/></svg><b>Substrate</b><span class="what">نظام ERP ذكي للشركات الصغيرة والمتوسطة</span><em>substrate-erp.com ↗</em></a>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="security" id="security">
+  <div class="wrap">
+    <h2 class="h2 reveal">مبني كبنك.<br><span class="soft">يعمل كشركة ناشئة.</span></h2>
+    <div class="shield-grid">
+      <div class="sg"><b>PCI DSS v4.0</b><span>جاهزية</span></div>
+      <div class="sg"><b>خزنة الرموز</b><span>بيانات البطاقة لا تمر عبرك أبداً</span></div>
+      <div class="sg"><b>WAF · DDoS</b><span>حماية على الحافة</span></div>
+      <div class="sg"><b>IDS · IPS</b><span>كشف التسلل</span></div>
+      <div class="sg"><b>OWASP Top 10</b><span>مغطّى</span></div>
+      <div class="sg"><b>AWS · Azure · محلي</b><span>رئيسي واستعادة كوارث، خدمات REST مصغّرة</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="talk" id="talk">
+  <div class="wrap">
+    <div class="talk-card">
+      <svg class="talk-comb" viewBox="0 0 400 300" aria-hidden="true"></svg>
+      <h2 class="h2">لنحقق<br>خطوتك التالية.</h2>
+      <div class="ctas">
+        <a class="btn gold lg" href="mailto:pt@moneybee.world?subject=MoneyBee%20Payment%20OS">لنتحدث</a>
+        <a class="btn ghost-inv lg" href="https://wa.me/971558612001?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20MoneyBee%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%20%D9%86%D8%B8%D8%A7%D9%85%20%D8%AA%D8%B4%D8%BA%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%AF%D9%81%D9%88%D8%B9%D8%A7%D8%AA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" class="wa"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.2z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-1.8-1-1 .8a4 4 0 0 1-2.3-2.3l.8-1-1-1.8z"/></svg>راسلنا على واتساب</a>
+      </div>
+      <p class="talk-contact"><a href="mailto:pt@moneybee.world">pt@moneybee.world</a> · <a href="https://wa.me/971558612001" target="_blank" rel="noopener">+971 55 861 2001</a></p>
+    </div>
+
+    <div class="demo" id="demo">
+      <div class="demo-copy">
+        <h3>احجز عرضاً توضيحياً</h3>
+        <p>أخبرنا قليلاً عن عملك وسنعود إليك خلال يوم عمل واحد بموعد يناسبك.</p>
+      </div>
+      <form class="demo-form" name="demo" method="POST" action="/ar/demo/thanks/" data-netlify="true" netlify-honeypot="company-site" data-demo>
+        <input type="hidden" name="form-name" value="demo">
+        <p class="hp" aria-hidden="true"><label>اترك هذا فارغاً <input name="company-site" tabindex="-1" autocomplete="off"></label></p>
+        <div class="f-row">
+          <label><span>اسمك</span><input name="name" type="text" autocomplete="name" required></label>
+          <label><span>بريد العمل</span><input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <div class="f-row">
+          <label><span>الشركة</span><input name="company" type="text" autocomplete="organization" required></label>
+          <label><span>الدولة</span><input name="country" type="text" autocomplete="country-name" placeholder="الإمارات، السعودية، الهند…"></label>
+        </div>
+        <label><span>ماذا تود أن ترى؟</span>
+          <select name="interest" required>
+            <option value="" disabled selected>اختر واحداً</option>
+            <option value="Payment orchestration">تنسيق المدفوعات</option>
+            <option value="Checkout, payment links and QR">صفحة الدفع وروابط الدفع وQR</option>
+            <option value="MoneyBee Lite app">تطبيق MoneyBee Lite</option>
+            <option value="Agentic merchant onboarding">تسجيل التجار بالذكاء الاصطناعي</option>
+            <option value="Risk, AML and screening">المخاطر ومكافحة غسل الأموال والفحص</option>
+            <option value="Crypto acceptance">قبول العملات الرقمية</option>
+            <option value="Card issuing">إصدار البطاقات</option>
+            <option value="White-label Payment OS for a bank or PSP">نظام مدفوعات بعلامة بيضاء لبنك أو مزوّد خدمات دفع</option>
+            <option value="Something else">شيء آخر</option>
+          </select>
+        </label>
+        <label><span>هل من شيء يجب أن نعرفه؟ <em>(اختياري)</em></span><textarea name="message" rows="3" placeholder="الحجم الشهري، المزوّدون الحاليون، الأسواق…"></textarea></label>
+        <div class="f-foot">
+          <button class="btn gold lg" type="submit">اطلب عرضاً</button>
+          <p class="f-note">نرد من pt@moneybee.world. لا نشرات بريدية، ولا مشاركة لبياناتك. <a href="/legal/privacy/">الخصوصية</a></p>
+        </div>
+        <div class="f-done" hidden role="status">
+          <b>شكراً، وصلنا طلبك.</b>
+          <span>توقع رداً خلال يوم عمل واحد. مستعجل؟ <a href="https://wa.me/971558612001" target="_blank" rel="noopener">راسلنا على واتساب</a>.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER START -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="/"><svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/><path d="M7 10H19M6 13H20M7 16H19"/></svg><span>money<b>bee</b></span></a>
+        <p class="small">نظام تشغيل المدفوعات. اقبل، وجّه، سوِّ، أصدر وطابق على دفتر واحد.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/moneybee-world" target="_blank" rel="noopener" aria-label="MoneyBee على لينكدإن"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a>
+          <a href="https://x.com/MoneybeeWorld" target="_blank" rel="noopener" aria-label="MoneyBee على X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77zm-1.08 16.17h1.7L7.4 4.74H5.58z"/></svg></a>
+          <a href="https://wa.me/971558612001" target="_blank" rel="noopener" aria-label="MoneyBee على واتساب"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+          <a href="mailto:pt@moneybee.world" aria-label="راسل MoneyBee"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+        </div>
+      </div>
+      <nav class="foot-cols" aria-label="التذييل">
+        <div><b>المنتجات</b><a href="/ar/products/#orchestration">تنسيق المدفوعات</a><a href="/ar/products/#checkout">صفحة الدفع</a><a href="/ar/products/#links">روابط الدفع وQR</a><a href="/ar/products/#lite">تطبيق MoneyBee Lite</a><a href="/ar/products/#onboarding">تسجيل التجار بالذكاء الاصطناعي</a><a href="/ar/products/#crypto">قبول العملات الرقمية</a><a href="/ar/products/#payouts">المدفوعات الصادرة</a><a href="/ar/products/#risk">المخاطر ومكافحة غسل الأموال</a></div>
+        <div><b>خدمات مضافة</b><a href="/ar/products/#cards">إصدار البطاقات · ekka</a><a href="/ar/products/#recon">المطابقة · SoleAI</a><a href="/ar/products/#substrate">Substrate ERP</a><a href="/ar/#play">تحدّى الموجّه</a></div>
+        <div><b>المطوّرون</b><a href="/docs/">التوثيق (إنجليزي)</a><a href="/docs/#quickstart">البدء السريع</a><a href="/docs/#payments">واجهة المدفوعات</a><a href="/docs/#webhooks">Webhooks</a><a href="/docs/#sdks">حزم SDK والإضافات</a><a href="/docs/#testing">بيئة الاختبار</a></div>
+        <div><b>الشركة</b><a href="/ar/company/">من نحن</a><a href="/ar/company/#partners">الشركاء</a><a href="/ar/#security">الأمان</a><a href="/ar/company/#contact">تواصل معنا</a><a href="mailto:pt@moneybee.world?subject=Careers%20at%20MoneyBee">الوظائف</a></div>
+        <div><b>قانوني</b><a href="/legal/terms/">شروط الاستخدام</a><a href="/legal/privacy/">سياسة الخصوصية</a><a href="/legal/cookies/">سياسة ملفات تعريف الارتباط</a><a href="/" lang="en">English</a></div>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>© 2026 Neon Global FZ-LLC، المنطقة الاقتصادية برأس الخيمة (راكز)، الإمارات العربية المتحدة. MoneyBee علامة تجارية لشركة Neon Global FZ-LLC.</p>
+      <p>توفر MoneyBee تقنية المدفوعات. وحيثما تُطلب خدمة دفع خاضعة للتنظيم، تقدمها مؤسسة شريكة مرخّصة. تعتمد المنتجات ووسائل الدفع والتغطية على السوق والأهلية والإعدادات. الصفحات القانونية متاحة بالإنجليزية.</p>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+
+<div class="hud" data-hud aria-live="polite">
+  <button class="hud-pill" type="button" aria-expanded="false" aria-controls="hud-panel">
+    <svg viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 23,7.5 23,18.5 13,24 3,18.5 3,7.5"/></svg>
+    <b data-honey>0</b><span>عسل</span><i data-coins>0/6</i>
+  </button>
+  <div class="hud-panel" id="hud-panel" hidden>
+    <b>خليتك</b>
+    <p>استكشف MoneyBee لتجمع العسل وتفتح العملات.</p>
+    <ul data-coinlist></ul>
+  </div>
+</div>
+<div class="toast" data-toast role="status"></div>
+<canvas class="confetti" aria-hidden="true"></canvas>
+<div class="cookie" data-cookie hidden role="region" aria-label="إشعار ملفات تعريف الارتباط">
+  <p>نستخدم تخزين المتصفح الأساسي فقط لتذكّر المظهر وتقدمك في اللعبة. لا تتبع، ولا إعلانات. <a href="/legal/cookies/">سياسة ملفات تعريف الارتباط</a></p>
+  <button class="btn ink" type="button" data-cookie-ok>حسناً</button>
+</div>
+<script src="/cookie.js" defer></script>
+<script src="/main.js" defer></script>
+</body>
+</html>
