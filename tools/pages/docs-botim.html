@@ -1,0 +1,123 @@
+/docs/botim/
+Botim via MoneyBee | Developer docs
+Accept Botim Pay, cards, Apple Pay, Google Pay, Samsung Pay, holds and subscriptions through MoneyBee's Botim connector in the UAE, with one API.
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Home</a> / <a href="/docs/">Developers</a> / Botim via MoneyBee</div>
+    <h1 class="reveal">Botim via MoneyBee.<br><span class="soft">One integration, every Botim rail.</span></h1>
+    <p class="lede">MoneyBee signs, encrypts and reconciles every Botim Money order for you. You send one payment intent; MoneyBee speaks Botim's API, handles 3-D Secure, confirms the result twice and posts it to your ledger.</p>
+  </div>
+</section>
+
+<div class="wrap docs">
+  <nav class="toc" aria-label="Sections">
+    <b>Overview</b>
+    <a href="#rails">What you can accept</a><a href="#how">How it works</a><a href="#tokens">Payment method tokens</a>
+    <b>Flows</b>
+    <a href="#wallet">Botim Pay wallet</a><a href="#paypage">Botim hosted page</a><a href="#cards">Cards (Direct Pay)</a><a href="#hold">Hold and capture</a><a href="#wallets">Apple, Google, Samsung Pay</a><a href="#subs">Subscriptions (CIT and MIT)</a>
+    <b>Reference</b>
+    <a href="#next">Next actions</a><a href="#results">Results and webhooks</a><a href="#refunds">Refunds and voids</a><a href="#testing">Testing</a><a href="#pci">PCI and security</a>
+  </nav>
+
+  <article class="doc">
+    <h2 id="rails">What you can accept</h2>
+    <table>
+      <tr><th>Rail</th><th>Payer experience</th><th>Token prefix</th></tr>
+      <tr><td>Botim Pay wallet</td><td>The Botim app opens, the payer confirms, returns to you</td><td><code>botim:</code> (scene EWALLET)</td></tr>
+      <tr><td>Botim hosted page</td><td>Botim's own page with every method enabled on your MID</td><td><code>botim:</code> (scene PAYPAGE)</td></tr>
+      <tr><td>Cards on your form</td><td>3-D Secure OTP page, then back to you</td><td><code>botimcard:</code></td></tr>
+      <tr><td>Hold now, capture later</td><td>Same as cards; capture or void within the hold window</td><td><code>botimcard:</code> with <code>capture: false</code></td></tr>
+      <tr><td>Apple Pay, Google Pay, Samsung Pay</td><td>Native wallet sheet, usually frictionless</td><td><code>botimdevice:</code></td></tr>
+      <tr><td>Subscriptions and instalments</td><td>One authenticated payment, then charges without the payer</td><td><code>botimcard:</code> with an agreement, then <code>botimmit:</code></td></tr>
+    </table>
+    <p class="note">Everything is AED. Botim is available to merchants onboarded on MoneyBee's UAE profile. Ask us to enable it on your MID.</p>
+
+    <h2 id="how">How it works</h2>
+    <p>You never talk to Botim directly. Every call below is a normal MoneyBee payment intent with <code>connector_id: "botim"</code> and a payment method token that tells MoneyBee which Botim rail to use. MoneyBee builds the Botim order, signs it with your merchant key, encrypts any card fields with Botim's public key, and maps Botim's statuses back to MoneyBee states.</p>
+<pre><code>curl -X POST https://api.moneybee.world/v1/payment_intents \
+  -H "authorization: Bearer $MONEYBEE_KEY" \
+  -H "idempotency-key: order-2041" \
+  -H "content-type: application/json" \
+  -d '{"amount": {"minor": 25000, "currency": "AED"}, "capture": true,
+       "connector_id": "botim", "payment_method_token": "botim:eyJzY2VuZSI6IkVXQUxMRVQiLCJyZWRpcmVjdFVybCI6Imh0dHBzOi8vc2hvcC5leGFtcGxlL3JldHVybiJ9"}'</code></pre>
+    <p>The response is a payment intent. When the payer still has something to do, its status is <code>requires_action</code> and <a href="#next">Next actions</a> tells you where to send them.</p>
+
+    <h2 id="tokens">Payment method tokens</h2>
+    <p>A token is a prefix, a colon, and a base64url-encoded JSON object. Build it on your server:</p>
+<pre><code>const token = (prefix, obj) => prefix + ':' + Buffer.from(JSON.stringify(obj)).toString('base64url');</code></pre>
+    <table>
+      <tr><th>Prefix</th><th>Fields</th></tr>
+      <tr><td><code>botim</code></td><td><code>scene</code> (<code>EWALLET</code> default, or <code>PAYPAGE</code>), <code>redirectUrl</code>, <code>subject</code> (max 12), <code>osType</code> (<code>IOS</code> or <code>ANDROID</code>), <code>terminalType</code> (<code>WEB</code>, <code>WAP</code>, <code>APP</code>), <code>customerId</code>, <code>email</code></td></tr>
+      <tr><td><code>botimcard</code></td><td><code>redirectUrl</code>, <code>card</code> {number, holderName, cvv, expYear, expMonth} or <code>enc</code> (already encrypted), <code>customerId</code>, <code>email</code>, <code>realIP</code>, <code>saveCard</code>, <code>threeDSecure</code> (default true), <code>agreement</code> (see subscriptions)</td></tr>
+      <tr><td><code>botimdevice</code></td><td><code>redirectUrl</code>, <code>devicePayType</code> (<code>APPLE_PAY</code>, <code>GOOGLE_PAY</code>, <code>SAMSUNG_PAY</code>), <code>card</code> {number (DPAN), expYear, expMonth, cryptogram} or <code>enc</code>, <code>eci</code>, <code>cryptoFmt</code> (default 3DSECURE), <code>customerId</code></td></tr>
+      <tr><td><code>botimmit</code></td><td><code>authProtocolNo</code> from the first payment, <code>subject</code></td></tr>
+    </table>
+    <p>MoneyBee appends <code>?Orderid=&lt;reference&gt;</code> to your <code>redirectUrl</code> so you can match the return to the payment.</p>
+
+    <h2 id="wallet">Botim Pay wallet</h2>
+    <p>Create the intent with a <code>botim:</code> token and scene <code>EWALLET</code>. The next action is a <code>deep_link</code>. On a phone, send the payer to it and the Botim app opens; on desktop, show it as a QR code. The payer confirms in Botim and is returned to your <code>redirectUrl</code>. Poll the intent or wait for the webhook; MoneyBee has already confirmed the order with Botim by then.</p>
+
+    <h2 id="paypage">Botim hosted page</h2>
+    <p>Scene <code>PAYPAGE</code> returns a <code>redirect</code> next action: Botim's own checkout with every method enabled on your Botim profile. Use it for payers without the Botim app. If you prefer to keep the payer on your site, the same URL can be rendered with Botim's JavaScript SDK (<code>PayBy.createIframe</code>).</p>
+
+    <h2 id="cards">Cards on your form (Direct Pay)</h2>
+    <p>If your systems are PCI DSS compliant for handling card data, send the card in a <code>botimcard:</code> token. MoneyBee encrypts the number, name and CVV with Botim's public key before anything leaves our server. Botim answers with a 3-D Secure step; the next action is type <code>3ds</code> with a URL on MoneyBee that renders Botim's OTP page. Send the payer there. After the OTP, Botim redirects to your <code>redirectUrl</code>.</p>
+<pre><code>{
+  "redirectUrl": "https://shop.example/return",
+  "card": { "number": "5123450000000008", "holderName": "A Payer", "cvv": "100", "expYear": "31", "expMonth": "05" },
+  "customerId": "cust_8812", "email": "payer@example.com", "realIP": "94.200.1.1", "saveCard": false
+}</code></pre>
+    <p>Already encrypting on your side? Pass <code>enc</code> with <code>cardNo</code>, <code>holderName</code> and <code>cvv</code> as Botim-encrypted Base64 instead of <code>card</code>.</p>
+
+    <h2 id="hold">Hold now, capture later</h2>
+    <p>Send <code>"capture": false</code> with a card token. MoneyBee places a PREAUTH order. After 3-D Secure the intent is <code>authorized</code>. Then:</p>
+<pre><code>POST /v1/payment_intents/{id}/capture     # places Botim's CAPTURE order, intent becomes captured
+POST /v1/payment_intents/{id}/void        # places PREAUTHVOID, the hold is released</code></pre>
+    <p>Botim's authorisation code and RRN are kept on the payment for your reconciliation.</p>
+
+    <h2 id="wallets">Apple Pay, Google Pay, Samsung Pay</h2>
+    <p>Register with Apple, Google or Samsung and have the wallet enabled on your Botim profile. Decrypt the wallet token on your server, then send the device card (DPAN), expiry, cryptogram and ECI in a <code>botimdevice:</code> token. MoneyBee encrypts them for Botim and submits a DEVICE_PAY order. DPAN payments are normally approved without an OTP; a Google Pay FPAN may return a 3DS step like a card.</p>
+
+    <h2 id="subs">Subscriptions and instalments (CIT and MIT)</h2>
+    <p>The first payment is customer-initiated: a <code>botimcard:</code> token with <code>saveCard: true</code>, a stable <code>customerId</code> and an <code>agreement</code>:</p>
+<pre><code>"agreement": {
+  "agreementType": "RECURRING",          // or UNSCHEDULED, INSTALLMENT
+  "numberOfPayments": 12, "amountVariability": "FIXED",
+  "expiryDate": "2027-11-01", "paymentFrequency": "MONTHLY", "minimumDaysBetweenPayments": 28
+}</code></pre>
+    <p>Once that payment is captured, read it: the payment carries <code>authProtocolNo</code>. Store it against the customer. Every later charge is merchant-initiated with no payer present:</p>
+<pre><code>"payment_method_token": "botimmit:<base64url {"authProtocolNo": "611776317090001699", "subject": "Month 2"}>"</code></pre>
+    <p>MIT charges settle synchronously: the intent comes back <code>captured</code> or <code>failed</code> in the same call.</p>
+
+    <h2 id="next">Next actions</h2>
+    <p>When an intent is <code>requires_action</code>, ask MoneyBee what to do:</p>
+<pre><code>GET https://api.moneybee.world/uae/intents/{id}/next
+{ "type": "deep_link", "url": "https://botim.me/botim/payby/open-iap-cashdesk?ft=..." }   // open the Botim app
+{ "type": "redirect",  "url": "https://checkout.payby.com/..." }                          // Botim's page
+{ "type": "3ds",       "url": "https://api.moneybee.world/uae/3ds/{id}" }                 // OTP page, hosted by MoneyBee</code></pre>
+
+    <h2 id="results">Results and webhooks</h2>
+    <p>Botim tells MoneyBee the outcome on your payer's return and, separately, by a signed notification that MoneyBee verifies with Botim's public key and retries are deduplicated. You see one of two events on your MoneyBee webhook: <code>payment.captured</code> or <code>payment.failed</code>, signed with <code>mb-signature</code> as described in the <a href="/docs/#webhooks">main docs</a>. Decline codes are prefixed <code>botim_</code> and carry Botim's fail code, for example <code>botim_ORDER_EXPIRED</code>.</p>
+
+    <h2 id="refunds">Refunds and voids</h2>
+    <p>Refunds go back to the original method, full or partial, for orders up to 180 days old:</p>
+<pre><code>POST /v1/payment_intents/{id}/refunds   {"amount": {"minor": 5000, "currency": "AED"}}</code></pre>
+    <p>A hold that was never captured is released with a void, not a refund.</p>
+
+    <h2 id="testing">Testing</h2>
+    <table>
+      <tr><th>What</th><th>Use</th></tr>
+      <tr><td>Botim Pay wallet</td><td>Botim UAT app (Android), accounts +971 56 000 0000 to 0009, OTP 123456, payment password 132580</td></tr>
+      <tr><td>Cards</td><td>5123 4500 0000 0008, expiry 05/31, CVV 100, then choose Success, Pending or Failure on the 3DS page</td></tr>
+      <tr><td>Sandbox base</td><td>Your MoneyBee sandbox key routes to Botim UAT automatically</td></tr>
+    </table>
+
+    <h2 id="pci">PCI and security</h2>
+    <ul>
+      <li>Wallet, hosted page and device-pay flows keep card data away from your systems. Only <code>botimcard:</code> requires you to handle card data, so use it only if you are PCI DSS compliant, or send fields you encrypted yourself.</li>
+      <li>MoneyBee signs every Botim request with SHA256withRSA and verifies every Botim response and notification. Encrypted card fields can only be read by Botim.</li>
+      <li>Card numbers, CVVs and cryptograms are never logged. Audit records keep brand, last four, auth code and RRN.</li>
+    </ul>
+    <p class="note">Questions or a MID to enable? <a href="mailto:pt@moneybee.world">pt@moneybee.world</a> or <a href="https://wa.me/971558612001">WhatsApp +971 55 861 2001</a>.</p>
+  </article>
+</div>

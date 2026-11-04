@@ -15,6 +15,8 @@ Integrate MoneyBee: authentication, payments, payment links, payouts, webhooks, 
     <a href="#overview">Overview</a><a href="#auth">Authentication</a><a href="#quickstart">Quickstart</a>
     <b>Guides</b>
     <a href="#payments">Payments</a><a href="#links">Payment links</a><a href="#payouts">Payouts</a><a href="#onboarding">Onboarding</a><a href="#webhooks">Webhooks</a>
+    <b>Connectors</b>
+    <a href="/docs/botim/">Botim via MoneyBee</a>
     <b>Reference</b>
     <a href="#idempotency">Idempotency</a><a href="#errors">Errors</a><a href="#testing">Testing</a><a href="#endpoints">Endpoints</a><a href="#sdks">SDKs and plugins</a>
   </nav>
@@ -151,6 +153,8 @@ mb = MoneyBeeClient("https://api.moneybee.world", key)
 payment = mb.create_payment(Amount(10000, "AED"))</code></pre>
     <h3>Java and PHP</h3>
     <p>SDKs with the same methods are available for Java and PHP. Ask us for access.</p>
+    <h3>Botim</h3>
+    <p>Botim Pay wallet, cards, Apple Pay, Google Pay, Samsung Pay, holds and subscriptions through one connector. See the <a href="/docs/botim/">Botim via MoneyBee guide</a>.</p>
     <h3>E-commerce plugins</h3>
     <p>Ready plugins for WooCommerce, Magento, Medusa and OpenCart. Install, paste your key, and MoneyBee checkout appears at the till.</p>
     <p class="note">Stuck? We answer developers directly: <a href="mailto:pt@moneybee.world">pt@moneybee.world</a> or <a href="https://wa.me/971558612001">WhatsApp +971 55 861 2001</a>.</p>
