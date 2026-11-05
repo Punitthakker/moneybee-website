@@ -708,10 +708,16 @@ section { padding: clamp(80px, 11vw, 150px) 0; position: relative; }
   .cell:nth-child(9n + 6) { margin-left: 0; }
   .cell:nth-child(5n + 4) { margin-left: calc(var(--s) * .5 + 2px); }
   .cell svg { width: 24px; height: 24px; }
-  .phones { height: 520px; }
-  .phone { width: 42vw; border-radius: 30px; padding: 7px; }
+  /* Phones on a narrow screen: the centre phone leads, the two side phones sit lower and behind it
+     so each screen stays readable instead of three 42vw phones piling on top of each other. */
+  .phones { height: 118vw; max-height: 560px; }
+  .phone { border-radius: 30px; padding: 7px; }
   .phone img { border-radius: 24px; }
-  .p1 { left: 0; } .p3 { right: 0; } .p2 { margin-left: -21vw; }
+  .p2 { width: 50vw; margin-left: -25vw; top: 7%; }
+  .p1, .p3 { width: 34vw; top: 22%; }
+  .p1 { left: -3vw; transform: rotate(-10deg) translateZ(-60px); }
+  .p3 { right: -3vw; transform: rotate(10deg) translateZ(-60px); }
+  .c1 { left: 2%; bottom: 6%; } .c2 { right: 0; top: 0; } .c3 { right: 4%; bottom: -2%; }
   .chip { font-size: 13px; padding: 8px 12px; }
   .shield-grid { grid-template-columns: 1fr; }
   .steps { padding-left: 34px; }
