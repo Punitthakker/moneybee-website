@@ -542,6 +542,12 @@ section { padding: clamp(80px, 11vw, 150px) 0; position: relative; }
 
 .orb.substrate { background: radial-gradient(120% 120% at 30% 20%, #3E5A4D, #1E2E27 60%, #121C18); color: #E8F2EC; border: 0; box-shadow: 0 30px 60px -28px rgba(20, 50, 35, .8); }
 .orb.substrate .lg { stroke: #9FD3B8; } .orb.substrate .lg path:first-child { fill: rgba(159, 211, 184, .2); }
+.orb.orki { background: radial-gradient(120% 120% at 30% 20%, #4FB7D8, #1E6E8C 60%, #0F3D52); color: #EAF7FC; border: 0; box-shadow: 0 30px 60px -28px rgba(20, 90, 120, .8); }
+.orb.orki .lg { stroke: #BFEAF7; } .orb.orki .lg circle { fill: rgba(191, 234, 247, .14); }
+.orb.orki em { background: rgba(191, 234, 247, .18); color: #EAF7FC; }
+.orb.fracxn { background: radial-gradient(120% 120% at 30% 20%, #C96A5A, #8A3B2A 60%, #4E2017); color: #FBEDE8; border: 0; box-shadow: 0 30px 60px -28px rgba(138, 59, 42, .8); }
+.orb.fracxn .lg { stroke: #F4C9BE; } .orb.fracxn .lg rect:first-child { fill: rgba(244, 201, 190, .2); }
+.orb.fracxn em { background: rgba(244, 201, 190, .18); color: #FBEDE8; }
 .orb.substrate em { background: rgba(159, 211, 184, .16); color: #CFEBDC; }
 
 /* cookie notice */
