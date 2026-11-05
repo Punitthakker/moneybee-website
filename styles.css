@@ -871,3 +871,21 @@ input, textarea { caret-color: var(--gold); }
 [dir="rtl"] .ar { transform: scaleX(-1); }
 @media (max-width: 980px) { .facts { grid-template-columns: repeat(2, 1fr); gap: 0 32px; } }
 [dir="rtl"] .nums b { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+
+/* Lite tile: a live feed of payments landing in the app */
+.t-lite { align-content: start; }
+.feed { position: absolute; left: 22px; bottom: 22px; width: min(42%, 280px); z-index: 1; display: grid; gap: 4px; }
+.feed-k { font-size: 12.5px; color: #B9B09F; display: inline-flex; align-items: center; gap: 7px; }
+.feed-k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #6FCF97; }
+.feed-total { font-weight: 500; font-size: 26px; letter-spacing: -.03em; color: #F3D79C; font-variant-numeric: tabular-nums; margin-bottom: 8px; }
+.feed ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.feed li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; font-size: 13.5px; padding: 8px 10px; border-radius: 8px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(217, 184, 120, .14); color: #E6DECE; font-variant-numeric: tabular-nums; animation: feedin .7s var(--ease); }
+.feed li small { color: #B9B09F; font-size: 12px; display: block; }
+.feed li b { font-weight: 500; color: #F2EDE2; white-space: nowrap; }
+.feed li.leave { animation: feedout .4s var(--ease) forwards; }
+@keyframes feedin { from { opacity: 0; transform: translateY(-10px); } }
+@keyframes feedout { to { opacity: 0; transform: translateY(8px); height: 0; padding-block: 0; margin-top: -6px; border-width: 0; } }
+[dir="rtl"] .feed { left: auto; right: 22px; }
+@media (max-width: 980px) { .feed { width: 44%; } }
+@media (max-width: 560px) { .feed { left: 16px; bottom: 16px; width: 48%; } .feed-total { font-size: 20px; margin-bottom: 4px; } .feed li { font-size: 12px; padding: 6px 8px; } .feed li:nth-child(n+3) { display: none; } [dir="rtl"] .feed { right: 16px; } }
+@media (prefers-reduced-motion: reduce) { .feed li { animation: none; } }
