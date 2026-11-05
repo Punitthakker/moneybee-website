@@ -226,28 +226,6 @@
   if (six) new IntersectionObserver((es) => es.forEach((e) => six.classList.toggle('go', e.isIntersecting && e.intersectionRatio > 0.6)), { threshold: [0, 0.6, 1] }).observe(six);
 
 
-  // ---------- Lite tile: payments landing in the app ----------
-  const feedList = $('[data-feed-list]'), feedTotal = $('[data-feed-total]');
-  if (feedList) {
-    const AR = document.documentElement.lang === 'ar';
-    const FEED = [
-      ['Visa', 'AED 929.00', AR ? 'لاتيه ×2' : 'Latte ×2'], ['UPI', 'INR 13,165.50', AR ? 'رابط دفع' : 'Payment link'], ['Apple Pay', 'AED 54.20', AR ? 'QR' : 'QR'],
-      ['mada', 'SAR 310.00', AR ? 'فاتورة' : 'Invoice'], ['iDEAL', 'EUR 64.00', AR ? 'الدفع' : 'Checkout'], ['Tabby', 'AED 899.00', AR ? 'رابط دفع' : 'Payment link'],
-      ['USDT', 'USDT 120.00', AR ? 'محفظة' : 'Wallet'], ['Google Pay', 'GBP 42.50', AR ? 'QR' : 'QR'],
-    ];
-    const RATE = { AED: 1, INR: 0.044, SAR: 0.98, EUR: 3.98, USDT: 3.67, GBP: 4.62 };
-    let total = 5781.66, fi = 0;
-    const item = ([m, a, w]) => { const li = document.createElement('li'); li.innerHTML = `<span>${m}<small>${w}</small></span><b>${a}</b>`; return li; };
-    FEED.slice(0, 3).forEach((f) => feedList.appendChild(item(f))); fi = 3;
-    const bump = ([, a]) => { const [cur, num] = a.split(' '); total += parseFloat(num.replace(/,/g, '')) * (RATE[cur] || 1); feedTotal.textContent = 'AED ' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
-    if (!reduce.matches) setInterval(() => {
-      if (paused || document.hidden) return;
-      const f = FEED[fi++ % FEED.length];
-      feedList.prepend(item(f)); bump(f);
-      const old = feedList.children[3]; if (old) { old.classList.add('leave'); setTimeout(() => old.remove(), 420); }
-    }, 2400);
-  }
-
   // ---------- counters ----------
   const cio = new IntersectionObserver((es) => es.forEach((e) => {
     if (!e.isIntersecting) return; cio.unobserve(e.target);

@@ -872,20 +872,26 @@ input, textarea { caret-color: var(--gold); }
 @media (max-width: 980px) { .facts { grid-template-columns: repeat(2, 1fr); gap: 0 32px; } }
 [dir="rtl"] .nums b { direction: ltr; unicode-bidi: isolate; display: inline-block; }
 
-/* Lite tile: a live feed of payments landing in the app */
+/* Lite tile: payments fly into the hive */
 .t-lite { align-content: start; }
-.feed { position: absolute; left: 22px; bottom: 22px; width: min(42%, 280px); z-index: 1; display: grid; gap: 4px; }
-.feed-k { font-size: 12.5px; color: #B9B09F; display: inline-flex; align-items: center; gap: 7px; }
-.feed-k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #6FCF97; }
-.feed-total { font-weight: 500; font-size: 26px; letter-spacing: -.03em; color: #F3D79C; font-variant-numeric: tabular-nums; margin-bottom: 8px; }
-.feed ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.feed li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; font-size: 13.5px; padding: 8px 10px; border-radius: 8px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(217, 184, 120, .14); color: #E6DECE; font-variant-numeric: tabular-nums; animation: feedin .7s var(--ease); }
-.feed li small { color: #B9B09F; font-size: 12px; display: block; }
-.feed li b { font-weight: 500; color: #F2EDE2; white-space: nowrap; }
-.feed li.leave { animation: feedout .4s var(--ease) forwards; }
-@keyframes feedin { from { opacity: 0; transform: translateY(-10px); } }
-@keyframes feedout { to { opacity: 0; transform: translateY(8px); height: 0; padding-block: 0; margin-top: -6px; border-width: 0; } }
-[dir="rtl"] .feed { left: auto; right: 22px; }
-@media (max-width: 980px) { .feed { width: 44%; } }
-@media (max-width: 560px) { .feed { left: 16px; bottom: 16px; width: 48%; } .feed-total { font-size: 20px; margin-bottom: 4px; } .feed li { font-size: 12px; padding: 6px 8px; } .feed li:nth-child(n+3) { display: none; } [dir="rtl"] .feed { right: 16px; } }
-@media (prefers-reduced-motion: reduce) { .feed li { animation: none; } }
+.hive { position: absolute; left: 0; bottom: 14px; width: 46%; z-index: 1; pointer-events: none; }
+.hive svg { width: 100%; height: auto; display: block; overflow: visible; }
+.hv-mark polygon { fill: rgba(217, 184, 120, .08); stroke: #D9B878; stroke-width: 2.4; stroke-linejoin: round; transform-origin: 150px 168px; animation: hvbreathe 4.8s var(--ease) infinite; }
+.hv-mark path { fill: none; stroke: #D9B878; stroke-width: 4; stroke-linecap: round; }
+.hv-ring polygon { fill: none; stroke: #D9B878; stroke-width: 1.2; stroke-linejoin: round; transform-origin: 150px 168px; opacity: 0; animation: hvring 4.8s var(--ease) infinite; }
+.hv-ring.r2 polygon { animation-delay: 1.2s; }
+.fly { color: #F3D79C; offset-rotate: 0deg; opacity: 0; animation: hvfly 4.8s cubic-bezier(.5, 0, .3, 1) infinite; }
+.fly rect, .fly circle { fill: #1F1C14; stroke: currentColor; stroke-width: 1.6; }
+.fly path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.fly text { fill: currentColor; font: 600 12px "Inter Tight", sans-serif; text-anchor: middle; }
+.f1 { offset-path: path("M-10 40 C 60 20, 110 60, 150 150"); }
+.f2 { offset-path: path("M300 20 C 240 20, 200 80, 150 150"); animation-delay: -1.2s; }
+.f3 { offset-path: path("M-20 150 C 40 170, 100 180, 150 160"); animation-delay: -2.4s; }
+.f4 { offset-path: path("M240 -20 C 230 60, 190 120, 150 152"); animation-delay: -3.6s; }
+@keyframes hvfly { 0% { offset-distance: 0%; opacity: 0; transform: scale(1); } 10% { opacity: 1; } 42% { opacity: 1; transform: scale(1); } 50% { offset-distance: 100%; opacity: 0; transform: scale(.25); } 100% { offset-distance: 100%; opacity: 0; } }
+@keyframes hvbreathe { 0%, 100% { transform: scale(1); fill: rgba(217, 184, 120, .08); } 50%, 54% { transform: scale(1.05); fill: rgba(217, 184, 120, .28); } 70% { transform: scale(1); } }
+@keyframes hvring { 0%, 48% { transform: scale(1); opacity: 0; } 52% { opacity: .7; } 100% { transform: scale(1.9); opacity: 0; } }
+[dir="rtl"] .hive { left: auto; right: 0; }
+@media (max-width: 980px) { .hive { width: 48%; } }
+@media (max-width: 560px) { .hive { width: 52%; bottom: -4px; } }
+@media (prefers-reduced-motion: reduce) { .fly, .hv-ring polygon { animation: none; } .fly { opacity: 1; offset-distance: 30%; } .hv-mark polygon { animation: none; } }
