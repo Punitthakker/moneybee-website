@@ -108,7 +108,7 @@ const payment = await mb.payments.create({
 });
 console.log(payment.id, payment.status);</code></pre>
     <h3>3. Listen for the result</h3>
-    <p>Register a webhook endpoint (see <a href="#webhooks">Webhooks</a>) and fulfil the order when you receive <code>payment_intent.succeeded</code>.</p>
+    <p>Register a webhook endpoint (see <a href="#webhooks">Webhooks</a>) and fulfil the order when you receive <code>payment.captured</code>, or when <code>GET /v1/payment_intents/{id}</code> shows <code>status: "captured"</code>. Captured means the provider accepted the capture; settlement is reported separately under <code>settlement.status</code>. Never fulfil from the success URL alone.</p>
 
     <h2 id="payments">Payments</h2>
     <p>A payment intent tracks one payment from creation to settlement. MoneyBee routes it to the best connector under your rules and retries on soft declines.</p>
@@ -155,6 +155,7 @@ export function verify(rawBody, header, secret) {
   return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(parts.v1));
 }</code></pre>
     <p>Respond with any 2xx status quickly and do the work afterwards. Events can arrive more than once, so make your handler safe to repeat using the event <code>id</code>.</p>
+    <p>Event types: <code>payment.captured</code>, <code>payment.failed</code>, <code>payment.cancelled</code>, <code>payment.requires_action</code>, <code>payment.refund_submitted</code>, <code>payment.refunded</code> (the provider accepted the refund; the cardholder has not been paid yet), <code>payment.refund_confirmed</code>, <code>payment.refund_failed</code>, <code>dispute.opened</code>, <code>dispute.evidence_submitted</code>, <code>dispute.won</code>, <code>dispute.lost</code>, <code>dispute.reversed</code>, <code>dispute.expired</code>. The full meaning of every status and event is published at <code>GET /v1/meta/states</code>.</p>
 
     <h2 id="idempotency">Idempotency</h2>
     <p>Send an <code>idempotency-key</code> header on every POST. If a request times out, retry with the same key and you will get the original result instead of a second payment.</p>
@@ -212,7 +213,7 @@ payment = mb.create_payment(Amount(10000, "AED"))</code></pre>
     <h3>Botim</h3>
     <p>Botim Pay wallet, cards, Apple Pay, Google Pay, Samsung Pay, holds and subscriptions through one connector. See the <a href="/docs/botim/">Botim via MoneyBee guide</a>.</p>
     <h3>E-commerce plugins</h3>
-    <p>Ready plugins for WooCommerce, Magento, Medusa and OpenCart. Install, paste your key, and MoneyBee checkout appears at the till.</p>
+    <p>WooCommerce: a packaged plugin on hosted checkout with a confirmed return and a signed webhook, tested against the sandbox. Medusa: a payment provider module in the repository, sandbox-tested. Magento: an early scaffold, not ready to install. OpenCart and Shopify: planned. Ask us before building on anything other than WooCommerce.</p>
     <p class="note">Stuck? We answer developers directly: <a href="mailto:pt@moneybee.world">pt@moneybee.world</a> or <a href="https://wa.me/971558612001">WhatsApp +971 55 861 2001</a>.</p>
   </article>
 </div>
