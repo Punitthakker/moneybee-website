@@ -1,11 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://moneybee.world/</loc><lastmod>2026-11-03</lastmod></url>
-  <url><loc>https://moneybee.world/company/</loc><lastmod>2026-11-03</lastmod></url>
-  <url><loc>https://moneybee.world/docs/botim/</loc><lastmod>2026-11-03</lastmod></url>
-  <url><loc>https://moneybee.world/docs/</loc><lastmod>2026-11-03</lastmod></url>
-  <url><loc>https://moneybee.world/legal/cookies/</loc><lastmod>2026-11-03</lastmod></url>
-  <url><loc>https://moneybee.world/legal/privacy/</loc><lastmod>2026-11-03</lastmod></url>
-  <url><loc>https://moneybee.world/legal/terms/</loc><lastmod>2026-11-03</lastmod></url>
-  <url><loc>https://moneybee.world/products/</loc><lastmod>2026-11-03</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://moneybee.world/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/"/>
+  </url>
+  <url>
+    <loc>https://moneybee.world/company/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/company/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/company/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/company/"/>
+  </url>
+  <url>
+    <loc>https://moneybee.world/docs/botim/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/docs/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/legal/cookies/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/legal/privacy/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/legal/terms/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/products/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/products/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/products/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/products/"/>
+  </url>
+  <url>
+    <loc>https://moneybee.world/ar/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/"/>
+  </url>
+  <url>
+    <loc>https://moneybee.world/ar/company/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/company/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/company/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/company/"/>
+  </url>
+  <url>
+    <loc>https://moneybee.world/ar/products/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/products/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/products/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/products/"/>
+  </url>
 </urlset>
