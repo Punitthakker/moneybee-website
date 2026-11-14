@@ -9,10 +9,14 @@
 <meta property="og:title" content="Botim via MoneyBee | Developer docs">
 <meta property="og:description" content="Accept Botim Pay, cards, Apple Pay, Google Pay, Samsung Pay, holds and subscriptions through MoneyBee's Botim connector in the UAE, with one API.">
 <meta property="og:image" content="https://moneybee.world/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://moneybee.world/docs/botim/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MoneyBee">
+<meta property="og:locale" content="en_AE">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@MoneybeeWorld">
 <link rel="canonical" href="https://moneybee.world/docs/botim/">
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -142,7 +146,7 @@ POST /v1/payment_intents/{id}/void        # places PREAUTHVOID, the hold is rele
   "expiryDate": "2027-11-01", "paymentFrequency": "MONTHLY", "minimumDaysBetweenPayments": 28
 }</code></pre>
     <p>Once that payment is captured, read it: the payment carries <code>authProtocolNo</code>. Store it against the customer. Every later charge is merchant-initiated with no payer present:</p>
-<pre><code>"payment_method_token": "botimmit:<base64url {"authProtocolNo": "611776317090001699", "subject": "Month 2"}>"</code></pre>
+<pre><code>"payment_method_token": "botimmit:&lt;base64url {"authProtocolNo": "611776317090001699", "subject": "Month 2"}&gt;"</code></pre>
     <p>MIT charges settle synchronously: the intent comes back <code>captured</code> or <code>failed</code> in the same call.</p>
 
     <h2 id="next">Next actions</h2>
@@ -198,7 +202,7 @@ POST /v1/payment_intents/{id}/void        # places PREAUTHVOID, the hold is rele
         <div><b>Value-added</b><a href="/products/#cards">Card issuing · ekka</a><a href="/products/#recon">Reconciliation · SoleAI</a><a href="/products/#substrate">Substrate ERP</a><a href="/#play">Beat the router</a></div>
         <div><b>Developers</b><a href="/docs/">Documentation</a><a href="/docs/#quickstart">Quickstart</a><a href="/docs/#payments">Payments API</a><a href="/docs/#webhooks">Webhooks</a><a href="/docs/#sdks">SDKs and plugins</a><a href="/docs/#testing">Sandbox testing</a></div>
         <div><b>Company</b><a href="/company/">About</a><a href="/company/#partners">Partners</a><a href="/#security">Security</a><a href="/company/#contact">Contact</a><a href="mailto:pt@moneybee.world?subject=Careers%20at%20MoneyBee">Careers</a></div>
-        <div><b>Legal</b><a href="/legal/terms/">Terms of use</a><a href="/legal/privacy/">Privacy policy</a><a href="/legal/cookies/">Cookie policy</a><a href="/ar/" lang="ar">عربي</a></div>
+        <div><b>Legal</b><a href="/legal/terms/">Terms of use</a><a href="/legal/privacy/">Privacy policy</a><a href="/legal/app-privacy/">App privacy</a><a href="/legal/cookies/">Cookie policy</a><a href="/ar/" lang="ar">عربي</a></div>
       </nav>
     </div>
     <div class="foot-legal">
