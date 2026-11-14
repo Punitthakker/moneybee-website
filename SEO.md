@@ -4,7 +4,7 @@ What the site does on its own (14 Nov 2026):
 - Every page: title, description, canonical, Open Graph and X card tags (`twitter:site` @MoneybeeWorld), 1200x630 share image.
 - English and Arabic pairs (home, company, products) linked both ways with hreflang, in the pages and in `sitemap.xml`.
 - `sitemap.xml` lists every indexable page in both languages with the date each last changed; `python3 tools/build.py` regenerates it.
-- Structured data (JSON-LD) on both home pages: Organization (Neon Global FZ-LLC, LinkedIn, X), WebSite and the product.
+- Structured data (JSON-LD) on both home pages: Organization (Neon Global FZ-LLC, LinkedIn, X) and WebSite only. No product or app entry until the apps are in the stores and live payment methods are confirmed, so the data never claims more than is available.
 - `robots.txt` allows the site and points to the sitemap; the 404 and thank-you pages carry noindex; build sources, repo notes and editor files answer 404 (netlify.toml).
 - IndexNow key file at the site root (`fd33fa9e377a9ef6699ec32ae370b6d8.txt`) so Bing and other IndexNow engines can be told about new pages at once.
 
