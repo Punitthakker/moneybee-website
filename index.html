@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
-<title>MoneyBee Payment OS</title>
+<title>MoneyBee | Payment gateway and payment links for UAE businesses</title>
 <meta name="description" content="MoneyBee is the Payment OS for global commerce. Accept, route, settle, issue and reconcile money on one ledger, across 120+ connectors. Launching across MENA, starting in the UAE.">
 <meta name="theme-color" content="#F4EFE4">
-<meta property="og:title" content="MoneyBee Payment OS">
+<meta property="og:title" content="MoneyBee Payment OS | Payments for UAE businesses">
 <meta property="og:description" content="Accept, route, settle, issue and reconcile money on one ledger.">
 <meta property="og:image" content="https://moneybee.world/assets/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -14,7 +14,10 @@
 <meta property="og:url" content="https://moneybee.world/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MoneyBee">
+<meta property="og:locale" content="en_AE">
+<meta property="og:locale:alternate" content="ar_AE">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@MoneybeeWorld">
 <link rel="canonical" href="https://moneybee.world/">
 <link rel="alternate" hreflang="en" href="https://moneybee.world/">
 <link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/">
@@ -24,6 +27,44 @@
 <link rel="preload" href="/assets/fonts/InterTight-500Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/InterTight-300Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://moneybee.world/#org",
+   "name": "MoneyBee",
+   "legalName": "Neon Global FZ-LLC",
+   "url": "https://moneybee.world/",
+   "logo": "https://moneybee.world/assets/img/logo-circle.svg",
+   "email": "pt@moneybee.world",
+   "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Ras Al Khaimah",
+    "addressCountry": "AE"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/company/moneybee-world",
+    "https://x.com/MoneybeeWorld"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://moneybee.world/#site",
+   "url": "https://moneybee.world/",
+   "name": "MoneyBee",
+   "publisher": {
+    "@id": "https://moneybee.world/#org"
+   },
+   "inLanguage": [
+    "en",
+    "ar"
+   ]
+  }
+ ]
+}
+</script>
 <script>
   // Pick up the saved theme before first paint.
   try { var t = localStorage.getItem('mb-theme'); if (t) document.documentElement.dataset.theme = t; else if (matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.dataset.theme = 'dark'; } catch (e) {}
@@ -179,7 +220,7 @@
         <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2M20 14v6h-6"/></svg>QR</li>
         <li><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7"/></svg>Invoice</li>
       </ul>
-      <p class="small">MoneyBee Lite for iOS and Android. Payments, links, payouts and disputes in your pocket, in English and Arabic.</p>
+      <p class="small">MoneyBee Lite, coming soon to iOS and Android. Payments, links, payouts and disputes in your pocket, in English and Arabic.</p>
     </div>
     <div class="phones" aria-label="MoneyBee Lite app and customer checkout">
       <figure class="phone p1"><img src="/assets/img/pay-page.webp" alt="Customer checkout page showing cards, wallets and local methods" width="390" height="844" loading="lazy"></figure>
@@ -200,7 +241,7 @@
       <p class="sh-p">Start with what you need this quarter. Add the rest without a second integration, a second contract or a second dashboard.</p>
     </header>
     <div class="bento">
-      <a class="tile t-lite" href="/products/#lite"><div class="tx-in"><b>MoneyBee Lite</b><span>Your business in your pocket. iOS and Android.</span></div><div class="hive" aria-hidden="true"><svg viewBox="0 0 300 240">
+      <a class="tile t-lite" href="/products/#lite"><div class="tx-in"><b>MoneyBee Lite</b><span>Your business in your pocket. Coming soon to iOS and Android.</span></div><div class="hive" aria-hidden="true"><svg viewBox="0 0 300 240">
   <g class="hv-ring"><polygon points="150,118 194,143 194,193 150,218 106,193 106,143"/></g>
   <g class="hv-ring r2"><polygon points="150,118 194,143 194,193 150,218 106,193 106,143"/></g>
   <g class="hv-mark"><polygon points="150,118 194,143 194,193 150,218 106,193 106,143"/><path d="M128 156H172M124 168H176M128 180H172"/></g>
@@ -332,7 +373,8 @@
   <div class="wrap split">
     <div class="copy">
       <h2 class="h2 reveal">Ten lines <span class="br">to your first payment.</span></h2>
-      <div class="sdks"><span>REST</span><span>Node</span><span>Python</span><span>Java</span><span>PHP</span><span>iOS</span><span>Android</span><span>WooCommerce</span><span>Medusa</span></div>
+      <div class="sdks"><span>REST</span><span>Node</span><span>Python</span><span>Java</span><span>PHP</span><span>WooCommerce</span><span>Medusa</span></div>
+      <p class="small">REST API for everyone. The Node, Python, Java and PHP SDKs and the WooCommerce and Medusa plugins are shared with your sandbox keys during onboarding.</p>
       <p class="small">Idempotent by default. Signed webhooks. A sandbox where every connector behaves like the real thing.</p>
     </div>
     <div class="code" aria-label="Code sample: create a payment">
