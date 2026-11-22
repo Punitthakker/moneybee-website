@@ -50,3 +50,17 @@
   to = "/404.html"
   status = 404
   force = true
+
+# MoneyBee Lite, the site for small businesses, lives on its own Netlify project.
+# moneybee.world/lite sends people there. When lite.moneybee.world is attached, change both targets to it.
+[[redirects]]
+  from = "/lite"
+  to = "https://moneybee-lite.netlify.app/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/lite/*"
+  to = "https://moneybee-lite.netlify.app/"
+  status = 302
+  force = true
