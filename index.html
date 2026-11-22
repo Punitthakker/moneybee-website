@@ -88,6 +88,7 @@
       <a href="/docs/">Developers</a>
       <a href="/company/">Company</a>
       <a href="/#play">Play</a>
+      <a class="to-lite" href="/lite">Small business? Lite</a>
     </nav>
     <div class="bar-actions">
       <button class="theme" type="button" aria-label="Switch light or dark theme">
@@ -101,6 +102,7 @@
   </div>
   <div class="sheet" id="sheet" hidden>
     <a href="/products/">Products</a><a href="/#platform">Platform</a><a href="/docs/">Developers</a><a href="/company/">Company</a><a href="/#play">Play the game</a><a href="/ar/" lang="ar">عربي</a>
+    <a href="/lite">Small business? MoneyBee Lite</a>
     <a class="btn ink" href="/#talk">Let's talk</a>
   </div>
 </header>
@@ -111,14 +113,21 @@
 <!-- HERO: one authored moment - a payment finds its route -->
 <section class="hero">
   <canvas class="silk" aria-hidden="true"></canvas>
-  <div class="wrap">
+  <div class="wrap hero-top">
+   <div class="hero-copy">
     <h1 class="h-hero"><span class="line">The world moves.</span> <span class="line soft">Move money with it.</span></h1>
     <p class="lede">One Payment OS to accept, route, settle, issue and reconcile, across 120+ connectors and one ledger.</p>
     <div class="ctas">
       <a class="btn ink lg" href="#talk">Let's talk</a>
       <a class="btn ghost lg" href="#platform">Explore the platform <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
+    <p class="lite-door">A cafe, a shop, a small business? <a href="/lite">MoneyBee Lite is made for you</a></p>
     <p class="launch"><span class="launch-k">Launch market</span><b>MENA</b><span class="launch-k">First live</span><b>United Arab Emirates</b><span class="rot" data-rot aria-hidden="true"><b>Accept locally</b><b>Connect globally</b><b>Orchestrate intelligently</b></span></p>
+   </div>
+   <div class="globe-wrap hero-globe" aria-label="MoneyBee corridors from Dubai to the world">
+      <canvas class="globe" width="640" height="640"></canvas>
+      <span class="city-tag t1">Dubai · AED</span><span class="city-tag t2">Mumbai · INR</span><span class="city-tag t3">London · GBP</span>
+    </div>
   </div>
 
   <div class="stage wrap" aria-label="A payment is routed by MoneyBee to the best provider, with automatic failover">
@@ -351,11 +360,7 @@
 
 <!-- GLOBAL -->
 <section class="global" id="global">
-  <div class="wrap split rev">
-    <div class="globe-wrap" aria-label="MoneyBee corridors from Dubai to the world">
-      <canvas class="globe" width="640" height="640"></canvas>
-      <span class="city-tag t1">Dubai · AED</span><span class="city-tag t2">Mumbai · INR</span><span class="city-tag t3">London · GBP</span>
-    </div>
+  <div class="wrap global-2">
     <div class="copy">
       <h2 class="h2 reveal">Accept locally. <span class="br">Settle globally.</span></h2>
       <p class="sh-p">Our launch market is the Middle East and North Africa, and the United Arab Emirates is first. Dubai is home; the corridors on this globe are the ones we are opening next.</p>
@@ -552,7 +557,7 @@
         </div>
       </div>
       <nav class="foot-cols" aria-label="Footer">
-        <div><b>Products</b><a href="/products/#orchestration">Payment orchestration</a><a href="/products/#checkout">Checkout</a><a href="/products/#links">Payment links and QR</a><a href="/products/#lite">MoneyBee Lite app</a><a href="/products/#onboarding">Agentic onboarding</a><a href="/products/#crypto">Crypto acceptance</a><a href="/products/#payouts">Payouts</a><a href="/products/#risk">Risk and AML</a></div>
+        <div><b>Products</b><a href="/products/#orchestration">Payment orchestration</a><a href="/products/#checkout">Checkout</a><a href="/products/#links">Payment links and QR</a><a href="/products/#lite">MoneyBee Lite app</a><a href="/lite">MoneyBee Lite for small business</a><a href="/products/#onboarding">Agentic onboarding</a><a href="/products/#crypto">Crypto acceptance</a><a href="/products/#payouts">Payouts</a><a href="/products/#risk">Risk and AML</a></div>
         <div><b>Value-added</b><a href="/products/#cards">Card issuing · ekka</a><a href="/products/#recon">Reconciliation · SoleAI</a><a href="/products/#substrate">Substrate ERP</a><a href="/#play">Beat the router</a></div>
         <div><b>Developers</b><a href="/docs/">Documentation</a><a href="/docs/#quickstart">Quickstart</a><a href="/docs/#payments">Payments API</a><a href="/docs/#webhooks">Webhooks</a><a href="/docs/#sdks">SDKs and plugins</a><a href="/docs/#testing">Sandbox testing</a></div>
         <div><b>Company</b><a href="/company/">About</a><a href="/company/#partners">Partners</a><a href="/#security">Security</a><a href="/company/#contact">Contact</a><a href="mailto:pt@moneybee.world?subject=Careers%20at%20MoneyBee">Careers</a></div>
