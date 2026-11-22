@@ -51,16 +51,16 @@
   status = 404
   force = true
 
-# MoneyBee Lite, the site for small businesses, lives on its own Netlify project.
-# moneybee.world/lite sends people there. When lite.moneybee.world is attached, change both targets to it.
+# MoneyBee Lite, the site for small businesses, is its own Netlify project that keeps its pages under /lite/.
+# These two rules serve it at moneybee.world/lite, so the address bar stays on moneybee.world.
 [[redirects]]
   from = "/lite"
-  to = "https://moneybee-lite.netlify.app/"
-  status = 302
+  to = "https://moneybee-lite.netlify.app/lite/"
+  status = 200
   force = true
 
 [[redirects]]
   from = "/lite/*"
-  to = "https://moneybee-lite.netlify.app/"
-  status = 302
+  to = "https://moneybee-lite.netlify.app/lite/:splat"
+  status = 200
   force = true
