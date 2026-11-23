@@ -33,7 +33,7 @@
 .duo .phone { width: min(300px, 80%); justify-self: center; }
 .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); gap: clamp(16px, 3vw, 40px); margin-top: clamp(30px, 4vw, 50px); }
 .shots figcaption { margin-top: 12px; font-size: 15.5px; color: var(--mute); text-align: center; }
-.sub .facts > div { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+@media (min-width: 1001px) { .sub .facts > div { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); } }
 .sub .spec { max-width: 52em; }
 .sub .acts { margin-top: 32px; }
 .sub .next .body > div { max-width: 46em; }
