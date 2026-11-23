@@ -81,6 +81,15 @@ LITE_STYLE = """<style>
 @media (max-width: 1000px) { .duo { grid-template-columns: minmax(0, 1fr); } .shots { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .shots { grid-template-columns: minmax(0, 240px); justify-content: center; } }
 </style>"""
+LITE_STYLE_AR = """<style>
+@font-face { font-family: "Plex Arabic"; src: url(/assets/fonts/PlexArabic-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Plex Arabic"; src: url(/assets/fonts/PlexArabic-600.woff2) format("woff2"); font-weight: 600 700; font-display: swap; }
+[dir="rtl"] body, [dir="rtl"] .d2, [dir="rtl"] .d3, [dir="rtl"] .sheet a.big, [dir="rtl"] .steps li::before { font-family: "Plex Arabic", "Inter Tight", system-ui, sans-serif; font-stretch: 100%; letter-spacing: 0; }
+[dir="rtl"] .d2 { line-height: 1.2; font-size: clamp(38px, 5.4vw, 88px); }
+[dir="rtl"] .d3 { line-height: 1.25; }
+[dir="rtl"] .when { transform: rotate(4deg); transform-origin: 100% 0; }
+@media (min-width: 1001px) { [dir="rtl"] .scene { padding-left: var(--pad); padding-right: 0; } [dir="rtl"] .when { padding-left: 0; padding-right: var(--pad); } }
+</style>"""
 # Light or dark (same key as the Lite home), the menu, and the header background once scrolled. No other script.
 LITE_SCRIPT = """<script>
 (function () {
@@ -108,7 +117,7 @@ for f in lite_src:
                f'<link rel="alternate" hreflang="x-default" href="https://moneybee.world{en}">\n')
     shell = (root / ('tools/lite-shell.ar.html' if ar else 'tools/lite-shell.en.html')).read_text()
     out = (shell.replace('{{TITLE}}', title).replace('{{DESC}}', desc).replace('{{PATH}}', path).replace('{{ALT}}', alt)
-           .replace('{{EN}}', en).replace('{{STYLE}}', LITE_STYLE).replace('{{SCRIPT}}', LITE_SCRIPT)
+           .replace('{{EN}}', en).replace('{{STYLE}}', LITE_STYLE + (LITE_STYLE_AR if ar else '')).replace('{{SCRIPT}}', LITE_SCRIPT)
            .replace('{{BODY}}', body).replace(f'<a href="{path}">', f'<a href="{path}" aria-current="page">'))
     assert '{{' not in out and '\u2014' not in out, f.name  # no unfilled token, no em dash
     dest = root / (path.strip('/') + '/index.html')
