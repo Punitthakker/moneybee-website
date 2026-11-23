@@ -68,9 +68,6 @@
   <url>
     <loc>https://moneybee.world/lite/payment-links/</loc>
     <lastmod>2026-11-23</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/lite/payment-links/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/lite/payment-links/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/lite/payment-links/"/>
   </url>
   <url>
     <loc>https://moneybee.world/lite/whatsapp-payment-link/</loc>
@@ -87,12 +84,5 @@
   <url>
     <loc>https://moneybee.world/lite/restaurants-cafes/</loc>
     <lastmod>2026-11-23</lastmod>
-  </url>
-  <url>
-    <loc>https://moneybee.world/ar/lite/payment-links/</loc>
-    <lastmod>2026-11-23</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/lite/payment-links/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/lite/payment-links/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/lite/payment-links/"/>
   </url>
 </urlset>
