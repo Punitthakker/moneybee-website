@@ -624,6 +624,8 @@ section { padding: clamp(80px, 11vw, 150px) 0; position: relative; }
 .legal h2 { font-weight: 600; font-size: 22px; letter-spacing: -.02em; margin: 40px 0 10px; }
 .legal p, .legal li { color: color-mix(in oklab, var(--text) 82%, var(--bg)); }
 .legal .meta { color: var(--soft); font-size: 14.5px; }
+.guide a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in oklab, var(--honey) 60%, transparent); }
+.guide li { margin: 6px 0; }
 .legal table { width: 100%; border-collapse: collapse; font-size: 14.5px; } .legal th, .legal td { text-align: left; padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
 
 /* company */

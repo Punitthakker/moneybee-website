@@ -1,0 +1,26 @@
+/guides/payment-orchestration/
+What is payment orchestration? A guide for UAE businesses | MoneyBee
+Payment orchestration explained for businesses in the UAE: what it is, when you need it, what it does not do, and the questions to ask a provider.
+<section class="page-hero"><div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/guides/">Guides</a></div><h1 class="reveal">What is payment orchestration?</h1><p class="lede">One connection between your business and every payment provider you use. Here is what that means in practice.</p></div></section>
+<div class="wrap legal guide">
+<p class="meta">A MoneyBee guide. Last updated 23 November 2026</p>
+<h2>The short answer</h2>
+<p>Payment orchestration is a layer that sits between your checkout and your payment providers. You integrate once. The layer then decides which provider handles each payment, records the result in one place, and lets you add or change providers without rebuilding your checkout.</p>
+<p>It does not move or hold money. The acquirers, gateways and banks you already work with still process and settle every payment.</p>
+<h2>The problem it solves</h2>
+<p>Most businesses start with one payment provider. That works until something changes:</p>
+<ul><li>You enter a new market and your provider does not cover it well.</li><li>Customers ask for a local wallet, buy now pay later or an instant bank payment your provider does not offer.</li><li>Your provider has an outage and you cannot take payments at all.</li><li>A second provider offers better rates for some cards, but using both means two integrations, two dashboards and two sets of reports.</li></ul>
+<p>Each new provider adds engineering work and one more report for finance to reconcile. Orchestration is the alternative to doing that work again for every provider.</p>
+<h2>What an orchestration layer does</h2>
+<table><tr><th>Job</th><th>What it means</th></tr><tr><td>One integration</td><td>Your checkout talks to one API. Providers are added behind it.</td></tr><tr><td>Routing</td><td>Rules decide which provider gets each payment, for example by card type, currency, amount or cost.</td></tr><tr><td>One record</td><td>Every payment, refund and dispute appears in one place, in one format.</td></tr><tr><td>Change without rebuilding</td><td>You can add a provider or move volume between providers through configuration.</td></tr></table>
+<h2>When you need it, and when you do not</h2>
+<p>You probably need orchestration if you use, or are about to use, more than one payment provider, sell in more than one country, or have enough volume that a small difference in cost or approval rate matters.</p>
+<p>You probably do not need it yet if you have one provider, one market and it is working. A second integration you never use is cost with no return. A small business taking payments by link or QR code does not need orchestration at all.</p>
+<h2>Why it comes up often in the UAE and the region</h2>
+<p>A business selling across the Gulf and North Africa rarely finds one provider that covers every country, currency and local payment method equally well. Customers also expect to pay in the way that is familiar in their own market. That combination is why multi-provider setups, and the orchestration that manages them, are common questions for businesses here.</p>
+<h2>Questions to ask before you choose</h2>
+<ul><li>Which providers are connected and live today in my market? Ask for the list, and ask which are planned.</li><li>Who holds the card data, and what is the platform's PCI DSS status?</li><li>If the orchestration layer is down, can I still take payments?</li><li>Can I change routing rules myself, or does it need a support ticket?</li><li>Do reports show provider fees, so I can see the real cost of each payment?</li><li>How is it priced: per payment, a monthly fee or both?</li><li>How do I leave? Can I export my tokens and data?</li></ul>
+<h2>Where MoneyBee fits</h2>
+<p>MoneyBee is a Payment OS launching in the UAE. It connects a business to more than one payment provider through a single integration. Coverage, methods and features depend on market and configuration, so the best way to see what is available for you is to talk to us.</p>
+<p><a href="/#talk">Talk to the MoneyBee team</a> or read the <a href="/guides/payment-reconciliation/">guide to payment reconciliation</a>.</p>
+</div>
