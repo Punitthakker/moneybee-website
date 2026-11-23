@@ -66,8 +66,9 @@ for f in sorted((root / 'tools/pages').glob('*.html')):
 LITE_STYLE = """<style>
 .sub-top { padding-top: clamp(120px, 14vh, 170px); }
 .sub .lede { margin-top: 28px; }
+.sub .d3 + .lede { margin-top: 12px; }
 .sub .d3 { margin-bottom: 8px; }
-.sub .facts + .d3, .sub .spec + .d3 { margin-top: clamp(50px, 6vw, 90px); }
+.sub .facts + .d3, .sub .spec + .d3, .sub .lede + .d3 { margin-top: clamp(50px, 6vw, 90px); }
 .sub .facts dt a { text-decoration: underline; text-underline-offset: 3px; }
 .duo { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(30px, 6vw, 100px); align-items: start; }
 .duo .phone { width: min(300px, 80%); justify-self: center; }

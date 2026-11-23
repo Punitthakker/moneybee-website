@@ -22,8 +22,9 @@
 <style>
 .sub-top { padding-top: clamp(120px, 14vh, 170px); }
 .sub .lede { margin-top: 28px; }
+.sub .d3 + .lede { margin-top: 12px; }
 .sub .d3 { margin-bottom: 8px; }
-.sub .facts + .d3, .sub .spec + .d3 { margin-top: clamp(50px, 6vw, 90px); }
+.sub .facts + .d3, .sub .spec + .d3, .sub .lede + .d3 { margin-top: clamp(50px, 6vw, 90px); }
 .sub .facts dt a { text-decoration: underline; text-underline-offset: 3px; }
 .duo { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(30px, 6vw, 100px); align-items: start; }
 .duo .phone { width: min(300px, 80%); justify-self: center; }
@@ -73,7 +74,7 @@
   <div class="body duo">
     <div>
       <h1 class="d2">From the first coffee to closing the till.</h1>
-      <p class="lede">A cafe takes payment in more ways in one day than most businesses do in a month: a desk order on WhatsApp, a queue at lunch, a table that wants to split, a catering deposit. Lite puts all of them in one app.</p>
+      <p class="lede">A cafe takes payment in more ways in one day than most businesses do in a month: a desk order on WhatsApp, a queue at lunch, a table that wants to pay without waiting, a catering deposit. Lite puts all of them in one app.</p>
       <div class="acts">
         <a class="b b-fill" href="https://wa.me/971558612001?text=Hi%20MoneyBee%2C%20I%27d%20like%20to%20start%20taking%20payments%20with%20Lite" target="_blank" rel="noopener">Chat on WhatsApp</a>
         <a class="b b-line" href="/lite/#demo">Book a demo</a>
@@ -90,7 +91,7 @@
     <dl class="facts">
       <div><dt>Morning</dt><dd>An office orders twelve coffees on WhatsApp. Send a link, start making them when it is paid.</dd></div>
       <div><dt>Lunch</dt><dd>The queue is out of the door. Customers scan the counter QR and pay while you serve.</dd></div>
-      <div><dt>Afternoon</dt><dd>A catering enquiry. Take a deposit with a link and bill the balance on the day.</dd></div>
+      <div><dt>Afternoon</dt><dd>A catering enquiry. Take the deposit with a link.</dd></div>
       <div><dt>Evening</dt><dd>Close the till. Today's total is already there, by person and by payment type.</dd></div>
     </dl>
   </div>
@@ -115,12 +116,9 @@
 </section>
 
 <section class="scene" data-tone="paper">
-  <p class="when"><span>questions</span></p>
+  <p class="when"><span>next</span></p>
   <div class="body">
-    <h2 class="d3">Questions people ask</h2>
-    <dl class="facts">
-      <div><dt>Can customers split a bill?</dt><dd>Yes. One order can be split into several payments.</dd></div>
-    </dl>
+    <h2 class="d3">Keep reading</h2>
     <div class="acts">
       <a class="b b-line" href="/lite/qr-payments/">QR code payments</a>
       <a class="b b-line" href="/lite/whatsapp-payment-link/">Payment links on WhatsApp</a>
@@ -156,7 +154,7 @@
     <div><h4>Talk to us</h4><a href="https://wa.me/971558612001" target="_blank" rel="noopener">+971 55 861 2001</a><a href="mailto:pt@moneybee.world">pt@moneybee.world</a><a href="https://moneybee.world/legal/privacy/">Privacy</a><a href="https://moneybee.world/legal/terms/">Terms of use</a><a href="https://moneybee.world/legal/cookies/">Cookie policy</a></div>
   </div>
   <div class="ft-legal">
-    <p>MoneyBee provides payment technology. Where a regulated payment service is required, it is provided by a licensed partner institution. Products, methods and coverage depend on market, eligibility and configuration. Card details are held in a token vault, and PCI DSS v4.0 certification is under way.</p>
+    <p>MoneyBee provides payment technology. Where a regulated payment service is required, it is provided by a licensed partner institution. Products, methods and coverage depend on market, eligibility and configuration.</p>
     <p>© 2026 Neon Global FZ-LLC, Ras Al Khaimah Economic Zone (RAKEZ), United Arab Emirates. MoneyBee is a brand of Neon Global FZ-LLC. The cafe, its customers and the figures on this page are illustrative. This site remembers only your light or dark choice, on your own device.</p>
   </div>
 </footer>
