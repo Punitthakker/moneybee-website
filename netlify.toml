@@ -50,3 +50,49 @@
   to = "/404.html"
   status = 404
   force = true
+
+# MoneyBee Lite search pages are built in this repo (tools/lite, python3 tools/build.py) and served from here.
+# They must come before the /lite/* proxy below; Netlify matches these with or without the trailing slash.
+[[redirects]]
+  from = "/lite/payment-links/"
+  to = "/lite/payment-links/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/lite/whatsapp-payment-link/"
+  to = "/lite/whatsapp-payment-link/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/lite/qr-payments/"
+  to = "/lite/qr-payments/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/lite/no-card-machine/"
+  to = "/lite/no-card-machine/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/lite/restaurants-cafes/"
+  to = "/lite/restaurants-cafes/index.html"
+  status = 200
+  force = true
+
+# MoneyBee Lite, the site for small businesses, is its own Netlify project that keeps its pages under /lite/.
+# These two rules serve it at moneybee.world/lite, so the address bar stays on moneybee.world.
+[[redirects]]
+  from = "/lite"
+  to = "https://moneybee-lite.netlify.app/lite/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/lite/*"
+  to = "https://moneybee-lite.netlify.app/lite/:splat"
+  status = 200
+  force = true
