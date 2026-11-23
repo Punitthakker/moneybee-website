@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://moneybee.world/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/"/>
@@ -36,14 +36,14 @@
   </url>
   <url>
     <loc>https://moneybee.world/products/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/products/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/products/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/products/"/>
   </url>
   <url>
     <loc>https://moneybee.world/ar/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/"/>
@@ -57,13 +57,42 @@
   </url>
   <url>
     <loc>https://moneybee.world/ar/products/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/products/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/products/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/products/"/>
   </url>
   <url>
     <loc>https://moneybee.world/lite/</loc>
-    <lastmod>2026-11-22</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/lite/payment-links/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/lite/payment-links/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/lite/payment-links/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/lite/payment-links/"/>
+  </url>
+  <url>
+    <loc>https://moneybee.world/lite/whatsapp-payment-link/</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/lite/qr-payments/</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/lite/no-card-machine/</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/lite/restaurants-cafes/</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://moneybee.world/ar/lite/payment-links/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moneybee.world/lite/payment-links/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://moneybee.world/ar/lite/payment-links/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moneybee.world/lite/payment-links/"/>
   </url>
 </urlset>
