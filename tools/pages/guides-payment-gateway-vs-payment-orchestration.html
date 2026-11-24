@@ -1,0 +1,32 @@
+/guides/payment-gateway-vs-payment-orchestration/
+Payment gateway vs payment orchestration, explained | MoneyBee
+The difference between a payment gateway and payment orchestration, what each one does, and how a UAE business can tell which it needs.
+<section class="page-hero"><div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/guides/">Guides</a></div><h1 class="reveal">Payment gateway or payment orchestration?</h1><p class="lede">They sound alike and they are often sold together. They do different jobs, and most businesses need the first long before the second.</p></div></section>
+<div class="wrap legal guide">
+<p class="meta">A MoneyBee guide. Last updated 24 November 2026</p>
+<h2>The short answer</h2>
+<p>A payment gateway carries a payment from your checkout to the company that processes it, and brings back the answer: approved or declined. Payment orchestration sits one level above. It connects your checkout to several gateways and providers at once and decides which of them handles each payment.</p>
+<p>Every business that takes cards online needs a gateway, or a provider that includes one. Only some need orchestration.</p>
+<h2>What a payment gateway does</h2>
+<p>When a customer pays on your website or app, the gateway is the part that collects the payment details on a secure page, sends them to the acquirer or processor, and returns the result to your checkout. It is one connection to one provider's network.</p>
+<p>Many providers bundle the gateway with the merchant account, the dashboard and the payouts, so you may never see it as a separate thing. If you signed up with one payment company and it works, you already have a gateway.</p>
+<h2>What payment orchestration adds</h2>
+<p>Orchestration does not replace gateways. It manages more than one of them. Your checkout talks to the orchestration layer, and the layer talks to each provider behind it. That gives you three things a single gateway cannot:</p>
+<ul><li><b>Choice per payment.</b> Rules send each payment to the provider best suited to it, for example by card type, currency or country.</li><li><b>A fallback.</b> If one provider is unavailable, payments can be sent to another.</li><li><b>One view.</b> Payments from every provider appear in one place and one format, which makes reporting and reconciliation simpler.</li></ul>
+<p>It also means adding or dropping a provider is a configuration change, not a rebuild of your checkout. Our <a href="/guides/payment-orchestration/">guide to payment orchestration</a> covers this in more detail.</p>
+<h2>Side by side</h2>
+<table><tr><th>Question</th><th>Payment gateway</th><th>Payment orchestration</th></tr><tr><td>What does it connect?</td><td>Your checkout to one provider</td><td>Your checkout to several providers</td></tr><tr><td>Who decides where a payment goes?</td><td>Nobody. There is one route.</td><td>Routing rules you set</td></tr><tr><td>What if the provider is down?</td><td>You wait, or switch by hand</td><td>Payments can go to another provider</td></tr><tr><td>Where are the reports?</td><td>In that provider's dashboard</td><td>In one place for all providers</td></tr><tr><td>Who is it for?</td><td>Any business taking payments online</td><td>Businesses with more than one provider, market or currency</td></tr></table>
+<h2>Do you need both?</h2>
+<p>If you use orchestration, yes, in the sense that the gateways and providers are still there doing the processing. Orchestration is an extra layer, not a substitute. Neither one holds your money: the licensed acquirers and banks behind them process and settle each payment.</p>
+<h2>How to tell which one you need</h2>
+<p>A gateway on its own is usually enough if:</p>
+<ul><li>You sell in one country, in one currency.</li><li>Your current provider covers the ways your customers want to pay.</li><li>An occasional outage is an inconvenience, not a serious loss.</li></ul>
+<p>Orchestration starts to earn its place if:</p>
+<ul><li>You already use two or more providers and maintain a separate integration for each.</li><li>You are expanding from the UAE into other markets, where one provider rarely covers every country and local payment method equally well.</li><li>Your volume is large enough that small differences in cost or approval rate between providers add up.</li><li>Finance spends days each month combining reports from different dashboards.</li></ul>
+<p>If none of the second list applies, stay with one good provider. A layer you do not use is cost and complexity with no return. And if you are a small business taking payments by link or QR code, you need neither decision: a simple tool such as a <a href="/lite/payment-links/">payment link</a> is enough.</p>
+<h2>Questions to ask a provider that says it does both</h2>
+<ul><li>Is this your own gateway with extra features, or a neutral layer over other providers? Can I bring a provider you do not own?</li><li>Which providers are connected and live in my market today?</li><li>Can I set and change the routing rules myself?</li><li>If your layer is unavailable, can I still take payments?</li><li>If I leave, what happens to my saved customer payment details and my data?</li></ul>
+<h2>Where MoneyBee fits</h2>
+<p>MoneyBee is a Payment OS launching in the UAE. It connects a business to more than one payment provider through one integration. Regulated services are provided by licensed partner institutions. What is available depends on your market and setup, so the best way to find out is to talk to us.</p>
+<p><a href="/#talk">Talk to the MoneyBee team</a> or read the <a href="/guides/payment-reconciliation/">guide to payment reconciliation</a>.</p>
+</div>
